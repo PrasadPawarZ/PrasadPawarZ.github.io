@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Prasad Pawar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c13;
+      --panel: rgba(15, 23, 42, 0.82);
+      --panel-2: rgba(15, 23, 42, 0.58);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --soft: #cbd5e1;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --violet: #a78bfa;
+      --orange: #fbbf24;
+      --radius: 22px;
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Space Grotesk', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(34,211,238,.22), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(167,139,250,.2), transparent 28%),
+        linear-gradient(145deg, #080c13 0%, #0f172a 55%, #07111f 100%);
+      color: var(--text);
+      font-family: var(--display);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--soft);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    .brand {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 32px;
+    }
+
+    .hero-copy,
+    .hero-preview,
+    .section-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-copy { padding: clamp(24px, 4vw, 42px); }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: .76rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 7vw, 5.4rem);
+      line-height: .92;
+      letter-spacing: -0.08em;
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .summary {
+      color: var(--soft);
+      max-width: 760px;
+      font-size: 1.02rem;
+    }
+
+    .meta-row,
+    .actions,
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pill,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--soft);
+      background: rgba(255,255,255,.045);
+      font-family: var(--mono);
+      font-size: .72rem;
+      padding: 7px 11px;
+    }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,211,238,.48);
+      color: #ecfeff;
+      background: rgba(34,211,238,.12);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: .78rem;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .action:hover {
+      transform: translateY(-2px);
+      background: rgba(34,211,238,.2);
+    }
+
+    .hero-preview {
+      min-height: 320px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+    }
+
+    .hero-preview::before {
+      content: '';
+      position: absolute;
+      inset: -25%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34,211,238,.18), transparent 24%),
+        radial-gradient(circle at 70% 70%, rgba(52,211,153,.16), transparent 26%);
+      transform: rotate(8deg);
+    }
+
+    .hero-preview img,
+    .gallery img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #020617;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-preview img {
+      max-height: 430px;
+      object-fit: contain;
+    }
+
+    .visual-panel {
+      width: 100%;
+      min-height: 260px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(34,211,238,.16), transparent 36%),
+        linear-gradient(315deg, rgba(167,139,250,.18), transparent 38%),
+        rgba(15,23,42,.92);
+      padding: 22px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .visual-panel::after {
+      content: '';
+      position: absolute;
+      right: -18%;
+      bottom: -28%;
+      width: 250px;
+      height: 250px;
+      border-radius: 999px;
+      background: rgba(34,211,238,.12);
+      filter: blur(14px);
+    }
+
+    .visual-label {
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-title {
+      font-size: clamp(1.6rem, 5vw, 3.4rem);
+      line-height: .95;
+      letter-spacing: -.06em;
+      max-width: 430px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-lines {
+      display: grid;
+      gap: 9px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-lines span {
+      display: block;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .visual-lines span:nth-child(1) { width: 78%; }
+    .visual-lines span:nth-child(2) { width: 52%; }
+    .visual-lines span:nth-child(3) { width: 64%; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 24px;
+    }
+
+    .section-card { padding: 24px; }
+
+    h2 {
+      font-size: 1.15rem;
+      letter-spacing: -.03em;
+      margin-bottom: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .shot {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .shot figcaption {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .72rem;
+      margin-top: 8px;
+      padding: 0 2px;
+    }
+
+    .readme {
+      display: grid;
+      gap: 18px;
+      color: var(--soft);
+    }
+
+    .readme-block {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      padding: 16px;
+    }
+
+    .readme-block h3 {
+      color: var(--text);
+      font-size: .95rem;
+      margin-bottom: 8px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      color: var(--soft);
+    }
+
+    li { margin: 5px 0; }
+
+    code {
+      font-family: var(--mono);
+      color: #cffafe;
+      background: rgba(34,211,238,.09);
+      padding: 2px 5px;
+      border-radius: 6px;
+    }
+
+    .empty {
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: rgba(255,255,255,.025);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="index.html#projects">Back to portfolio</a>
+      <div class="brand">Project gallery and README notes</div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" id="category">Project</p>
+        <h1 id="title">Project Details</h1>
+        <p class="summary" id="summary"></p>
+        <div class="meta-row" id="meta"></div>
+        <div class="chips" id="tech"></div>
+        <div class="actions" id="actions"></div>
+      </div>
+      <div class="hero-preview" id="heroPreview"></div>
+    </section>
+
+    <section class="layout">
+      <article class="section-card">
+        <h2>Screenshot Gallery</h2>
+        <div class="gallery" id="gallery"></div>
+      </article>
+
+      <article class="section-card">
+        <h2>README & Project Details</h2>
+        <div class="readme" id="readme"></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const projects = {
+      'trash-view-on-maps': {
+        title: 'Trash View on Maps',
+        category: 'Web Game',
+        status: 'Runnable with Google Maps credentials',
+        repo: '',
+        summary: 'An interactive browser game where players inspect Street View locations across Indian cities and decide whether visible trash is present.',
+        tech: ['Node.js', 'Express', 'JavaScript', 'Google Maps API'],
+        gallery: [
+          ['portfolio-assets/Trash-map/project-trash-map.png', 'Start screen and game prompt'],
+          ['portfolio-assets/Trash-map/trash-map-desktop.png', 'Desktop gameplay view captured locally'],
+          ['portfolio-assets/Trash-map/trash-map-mobile.png', 'Mobile responsive gameplay view']
+        ],
+        readme: {
+          Overview: 'The game serves a browser UI and API routes from the server app, while a proxy signs and forwards Google Maps and Street View requests.',
+          Highlights: ['Randomized city-based rounds', 'Street View metadata flow through proxy service', 'Score-based gameplay loop for 10 rounds'],
+          'Run Locally': ['Install dependencies in proxy and server folders', 'Add Google Maps API key and signing secret to proxy/.env', 'Run npm start and open http://localhost:3001']
+        }
+      },
+      'alzheimers-disease-prediction': {
+        title: "Alzheimer's Disease Prediction System",
+        category: 'AI / ML',
+        status: 'Portfolio screenshots available',
+        repo: '',
+        summary: 'A full-stack AI project for Alzheimer prediction using MRI images, CNN classification, patient records, and prediction history workflows.',
+        tech: ['Python', 'FastAPI', 'React', 'TensorFlow', 'CNN', 'OpenCV', 'PostgreSQL', 'Docker'],
+        gallery: [
+          ['portfolio-assets/Alzhaimer-Detection/Picture1.jpg', 'Landing and project entry view'],
+          ['portfolio-assets/Alzhaimer-Detection/Picture2.jpg', 'Prediction workflow screen'],
+          ['portfolio-assets/Alzhaimer-Detection/Picture3.jpg', 'Patient or result management view'],
+          ['portfolio-assets/Alzhaimer-Detection/Picture4.jpg', 'Analysis interface screenshot'],
+          ['portfolio-assets/Alzhaimer-Detection/Picture5.jpg', 'Final output or dashboard screenshot']
+        ],
+        readme: {
+          Overview: 'The project combines a machine-learning backend with a React user interface to support medical-image based prediction workflows.',
+          Highlights: ['CNN-based image classification pipeline', 'Backend API for predictions and records', 'Frontend screens for upload, result review, and history'],
+          'Project Notes': ['Designed as an applied healthcare AI portfolio project', 'Uses MRI image processing concepts', 'Best presented with screenshots because model assets may be large']
+        }
+      },
+      'diabetes-prediction': {
+        title: 'Diabetes Prediction',
+        category: 'AI / ML Notebook',
+        status: 'Notebook project',
+        repo: 'https://github.com/PrasadPawarZ/Diabetes-Prediction-Project',
+        summary: 'A supervised machine-learning notebook that predicts diabetes outcomes from a healthcare dataset after preprocessing and model evaluation.',
+        tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Jupyter'],
+        gallery: [
+          ['portfolio-assets/projects/diabetes-prediction/diabetes-1.png', 'Notebook output chart extracted from the project']
+        ],
+        readme: {
+          Overview: 'The repository contains DiabetesPrediction.ipynb and diabetes.csv for an end-to-end classification workflow.',
+          Highlights: ['Data loading and cleaning', 'Model training and evaluation', 'Metric-driven comparison of classification performance'],
+          'Run Locally': ['Open the notebook in Jupyter, VS Code, or Colab', 'Install pandas, numpy, matplotlib, seaborn, and scikit-learn', 'Run cells from top to bottom']
+        }
+      },
+      'survival-chances-accident': {
+        title: 'Survival Chances in Accident',
+        category: 'AI / ML Notebook',
+        status: 'Notebook project',
+        repo: 'https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident',
+        summary: 'A predictive notebook that estimates survival probability in accident cases using train/test CSV data and classification modeling.',
+        tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Jupyter'],
+        gallery: [
+          ['portfolio-assets/projects/survival-chances-accident/survival-1.png', 'Notebook output chart extracted from the project']
+        ],
+        readme: {
+          Overview: 'The project includes a notebook plus Accident_train.csv and Accident_test.csv for data exploration and prediction.',
+          Highlights: ['Exploratory data analysis', 'Feature preparation for accident records', 'Classification model evaluation'],
+          'Run Locally': ['Open Survival-chances-in-an-accident.ipynb', 'Keep the CSV files in the same repo folder', 'Run the notebook cells in order']
+        }
+      },
+      'second-hand-car-price-prediction': {
+        title: 'Second Hand Car Price Prediction',
+        category: 'AI / ML Notebook',
+        status: 'Notebook project',
+        repo: 'https://github.com/PrasadPawarZ/Second-Hand-Car-Price-Prediction',
+        summary: 'A regression-focused project for predicting used-car market prices from vehicle attributes such as age, mileage, brand, and fuel type.',
+        tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Jupyter'],
+        gallery: [],
+        visualLabel: 'Regression Notebook',
+        readme: {
+          Overview: 'The repository is structured around a single notebook for used-car price modeling and performance comparison.',
+          Highlights: ['Regression workflow', 'Feature engineering plan', 'Model comparison and predicted price output'],
+          'Run Locally': ['Open Second-Hand-Car-Price-Prediction.ipynb', 'Install standard notebook dependencies', 'Run cells from top to bottom']
+        }
+      },
+      'credit-card-fraud-detection': {
+        title: 'Credit Card Fraud Detection',
+        category: 'AI / ML Notebook',
+        status: 'Notebook project',
+        repo: 'https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection',
+        summary: 'A classification notebook for detecting fraudulent credit-card transactions with attention to class imbalance and evaluation metrics.',
+        tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'SMOTE', 'Jupyter'],
+        gallery: [
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-1.png', 'Logistic regression confusion matrix'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-2.png', 'Model evaluation visual'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-3.png', 'Classifier comparison visual'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-4.png', 'Notebook output visual'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-5.png', 'Notebook output visual'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-6.png', 'Notebook output visual'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-7.png', 'Notebook output visual']
+        ],
+        readme: {
+          Overview: 'The repository includes a notebook and UCI_Credit_Card.csv for fraud analysis and classification modeling.',
+          Highlights: ['Imbalanced classification workflow', 'SMOTE oversampling', 'Confusion matrices and model metrics'],
+          'Run Locally': ['Open Credit-Card-Fraud-Detection.ipynb', 'Install pandas, numpy, seaborn, matplotlib, and scikit-learn', 'Run all notebook cells']
+        }
+      },
+      'olympic-data-eda': {
+        title: 'Olympic Data EDA',
+        category: 'Exploratory Data Analysis',
+        status: 'Notebook project',
+        repo: 'https://github.com/PrasadPawarZ/Olympic-Data-EDA',
+        summary: 'An exploratory notebook that studies Olympic athletes, medals, participation trends, and country-level performance patterns through charts and visual analysis.',
+        tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
+        gallery: [
+          ['portfolio-assets/projects/olympic-eda/olympic-1.png', 'Olympic notebook visual 1'],
+          ['portfolio-assets/projects/olympic-eda/olympic-2.png', 'Olympic notebook visual 2'],
+          ['portfolio-assets/projects/olympic-eda/olympic-3.png', 'Olympic notebook visual 3'],
+          ['portfolio-assets/projects/olympic-eda/olympic-4.png', 'Olympic notebook visual 4'],
+          ['portfolio-assets/projects/olympic-eda/olympic-5.png', 'Olympic notebook visual 5'],
+          ['portfolio-assets/projects/olympic-eda/olympic-6.png', 'Olympic notebook visual 6'],
+          ['portfolio-assets/projects/olympic-eda/olympic-7.png', 'Olympic notebook visual 7'],
+          ['portfolio-assets/projects/olympic-eda/olympic-8.png', 'Olympic notebook visual 8'],
+          ['portfolio-assets/projects/olympic-eda/olympic-9.png', 'Olympic notebook visual 9'],
+          ['portfolio-assets/projects/olympic-eda/olympic-10.png', 'Olympic notebook visual 10'],
+          ['portfolio-assets/projects/olympic-eda/olympic-11.png', 'Olympic notebook visual 11'],
+          ['portfolio-assets/projects/olympic-eda/olympic-12.png', 'Olympic notebook visual 12']
+        ],
+        readme: {
+          Overview: 'The project uses Olympic datasets to explore participation, medal distribution, and historical sports trends.',
+          Highlights: ['Athlete and country-level EDA', 'Medal trend visualization', 'Multiple notebook charts exported into the portfolio gallery'],
+          'Run Locally': ['Open EDA-Olympics.ipynb', 'Install pandas, matplotlib, seaborn, and notebook dependencies', 'Run the analysis cells and compare the generated charts']
+        }
+      },
+      'visualizing-cnn-filters': {
+        title: 'Visualizing Filters of a CNN',
+        category: 'Deep Learning',
+        status: 'Concept and certificate asset available',
+        repo: '',
+        summary: 'A deep-learning visualization project focused on understanding what convolutional filters and activation layers learn inside a CNN.',
+        tech: ['Python', 'TensorFlow', 'Matplotlib', 'NumPy'],
+        gallery: [],
+        visualLabel: 'CNN Filter Visuals',
+        readme: {
+          Overview: 'The project explains CNN internals by visualizing filters, feature maps, and layer activations.',
+          Highlights: ['Layer activation inspection', 'Filter visualization', 'Model explainability practice'],
+          'Project Notes': ['Useful for explaining deep-learning interpretability', 'Screenshots can be expanded when the notebook visuals are exported']
+        }
+      },
+      'daily-diary': {
+        title: 'Daily Diary',
+        category: 'Web App',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/Daily-Dairy',
+        summary: 'A personal digital diary web app for writing, editing, and browsing journal entries in a clean responsive interface.',
+        tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+        gallery: [],
+        visualLabel: 'Web App Preview',
+        readme: {
+          Overview: 'The app focuses on a simple journal-entry workflow with a browser-first UI.',
+          Highlights: ['Create and edit entries', 'Responsive layout', 'Simple frontend architecture'],
+          'Project Notes': ['A good candidate for adding live UI screenshots next', 'The detail page now gives the project a dedicated portfolio destination']
+        }
+      },
+      'student-result-evaluation': {
+        title: 'Student Result Evaluation & Analysis System',
+        category: 'Analytics',
+        status: 'Portfolio project',
+        repo: '',
+        summary: 'An automated evaluation pipeline that reduces manual result processing and generates academic performance reports.',
+        tech: ['Python', 'Excel', 'Pandas', 'Data Analysis'],
+        gallery: [],
+        visualLabel: 'Analytics Workflow',
+        readme: {
+          Overview: 'The system processes result data and creates summaries for course outcomes, faculty analysis, and departmental performance.',
+          Highlights: ['Excel-based reporting flow', 'Automated calculations', 'Academic analytics dashboard concept'],
+          'Project Notes': ['Best future screenshots would include sample report outputs and analysis sheets']
+        }
+      },
+      'car-rental-system': {
+        title: 'Car Rental System',
+        category: 'Java Desktop',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/ajp-car',
+        summary: 'A Java Swing desktop application for managing rentals, availability, customer records, and billing.',
+        tech: ['Java', 'Swing', 'Maven', 'Microsoft Access', 'OOP'],
+        gallery: [],
+        visualLabel: 'Java Swing App',
+        readme: {
+          Overview: 'The project uses a Java Swing UI and a Microsoft Access database for car rental management.',
+          Highlights: ['Add vehicles', 'Check availability', 'Rent and return vehicles', 'Search by VIN', 'View all records'],
+          'Run Locally': ['Install Java 11 or newer and Maven', 'Run mvn clean compile', 'Run mvn exec:java from the repo root']
+        }
+      },
+      'train-reservation-system': {
+        title: 'Train Reservation System',
+        category: 'Java Desktop',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/Train_Reservation_System',
+        summary: 'A GUI-based reservation app for booking seats, checking PNR status, cancelling tickets, and browsing train schedules.',
+        tech: ['Java', 'Swing', 'OOP'],
+        gallery: [],
+        visualLabel: 'Reservation UI',
+        readme: {
+          Overview: 'A desktop project demonstrating object-oriented design and Swing-based booking workflows.',
+          Highlights: ['Seat reservation', 'Cancellation flow', 'PNR status checks', 'Schedule browsing'],
+          'Project Notes': ['A future UI screenshot pass can capture the main booking forms from the Java app']
+        }
+      },
+      'atm-interface': {
+        title: 'ATM Interface',
+        category: 'Java Desktop',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/ATM_Interface',
+        summary: 'A simulated ATM application with PIN login, withdrawals, deposits, balance enquiry, and mini statement flow.',
+        tech: ['Java', 'Swing', 'OOP'],
+        gallery: [],
+        visualLabel: 'ATM Flow',
+        readme: {
+          Overview: 'The app demonstrates a banking transaction workflow in a desktop Java interface.',
+          Highlights: ['PIN authentication', 'Cash withdrawal', 'Deposits', 'Balance enquiry', 'Mini statement'],
+          'Project Notes': ['Useful for showing basic GUI state management and account operations']
+        }
+      },
+      'bank-management-system': {
+        title: 'Bank Management System',
+        category: 'Android / Java',
+        status: 'Portfolio project',
+        repo: '',
+        summary: 'A banking operations application concept covering account creation, fund transfer, transaction history, and balance management.',
+        tech: ['Android', 'Java', 'OOP'],
+        gallery: [],
+        visualLabel: 'Banking App',
+        readme: {
+          Overview: 'The project presents core banking operations through a Java-based mobile app structure.',
+          Highlights: ['Account creation', 'Fund transfers', 'Transaction history', 'Balance management'],
+          'Project Notes': ['Future screenshots should include the login, account, and transaction screens']
+        }
+      },
+      'guess-the-number-game': {
+        title: 'Guess the Number Game',
+        category: 'Java Game',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/Guess_No_Game',
+        summary: 'An interactive number guessing game with difficulty, score tracking, and hint logic.',
+        tech: ['Java', 'Swing'],
+        gallery: [],
+        visualLabel: 'Game UI',
+        readme: {
+          Overview: 'A beginner-friendly Java game project demonstrating interaction loops and simple state management.',
+          Highlights: ['Configurable difficulty', 'Score tracking', 'Hint system'],
+          'Project Notes': ['A compact project that fits well as a quick Java portfolio example']
+        }
+      },
+      'rsa-key-pair-generation': {
+        title: 'Cryptographic Key Pair Generation (RSA)',
+        category: 'Systems',
+        status: 'Portfolio project',
+        repo: '',
+        summary: 'A Python implementation of RSA key-pair generation concepts using prime selection, modular arithmetic, and encryption fundamentals.',
+        tech: ['Python', 'Cryptography', 'Algorithms'],
+        gallery: [],
+        visualLabel: 'Security Algorithm',
+        readme: {
+          Overview: 'The project demonstrates asymmetric key generation and core RSA ideas in code.',
+          Highlights: ['Public and private key generation', 'Modular exponentiation', 'Encryption fundamentals'],
+          'Project Notes': ['A console screenshot or algorithm flow diagram would be a strong future addition']
+        }
+      },
+      'hotel-management-system': {
+        title: 'Hotel Management System',
+        category: 'C++ Systems',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/Hotel_Room_Booking',
+        summary: 'A C++ hotel management application for room booking, check-in and checkout operations, customer records, and billing.',
+        tech: ['C++', 'OOP', 'Data Structures'],
+        gallery: [],
+        visualLabel: 'Console App',
+        readme: {
+          Overview: 'The project uses C++ OOP concepts to manage hotel rooms and booking data.',
+          Highlights: ['Room booking', 'Customer records', 'Check-in and checkout', 'Billing flow'],
+          'Project Notes': ['A terminal screenshot can be added later when the console flow is captured']
+        }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('project') || 'trash-view-on-maps';
+    const project = projects[id] || projects['trash-view-on-maps'];
+
+    document.title = `${project.title} | Prasad Pawar`;
+    document.getElementById('category').textContent = project.category;
+    document.getElementById('title').textContent = project.title;
+    document.getElementById('summary').textContent = project.summary;
+    document.getElementById('meta').innerHTML = `
+      <span class="pill">${project.status}</span>
+      <span class="pill">${project.gallery.length || 1} visual${(project.gallery.length || 1) > 1 ? 's' : ''}</span>
+    `;
+    document.getElementById('tech').innerHTML = project.tech.map(t => `<span class="chip">${t}</span>`).join('');
+    document.getElementById('actions').innerHTML = `
+      <a class="action" href="index.html#projects">Back to projects</a>
+      ${project.repo ? `<a class="action" href="${project.repo}" target="_blank" rel="noopener">Open GitHub repo</a>` : ''}
+    `;
+
+    const heroPreview = document.getElementById('heroPreview');
+    const firstImage = project.gallery[0];
+    if (firstImage) {
+      heroPreview.innerHTML = `<img src="${firstImage[0]}" alt="${project.title} main screenshot">`;
+    } else {
+      heroPreview.innerHTML = renderVisual(project.visualLabel || project.category, project.title);
+    }
+
+    const gallery = document.getElementById('gallery');
+    if (project.gallery.length) {
+      gallery.innerHTML = project.gallery.map(([src, caption]) => `
+        <figure class="shot">
+          <a href="${src}" target="_blank" rel="noopener">
+            <img src="${src}" alt="${caption}">
+          </a>
+          <figcaption>${caption}</figcaption>
+        </figure>
+      `).join('');
+    } else {
+      gallery.innerHTML = `
+        <div class="empty">No exported UI screenshot was found for this project yet. I added a clean visual project panel and README-style details so the portfolio page still has a dedicated destination.</div>
+        <div class="shot">${renderVisual(project.visualLabel || project.category, project.title)}</div>
+      `;
+    }
+
+    const readme = document.getElementById('readme');
+    readme.innerHTML = Object.entries(project.readme).map(([heading, value]) => {
+      const body = Array.isArray(value)
+        ? `<ul>${value.map(item => `<li>${item}</li>`).join('')}</ul>`
+        : `<p>${value}</p>`;
+      return `<section class="readme-block"><h3>${heading}</h3>${body}</section>`;
+    }).join('');
+
+    function renderVisual(label, title) {
+      return `
+        <div class="visual-panel">
+          <div class="visual-label">${label}</div>
+          <div class="visual-title">${title}</div>
+          <div class="visual-lines"><span></span><span></span><span></span></div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
