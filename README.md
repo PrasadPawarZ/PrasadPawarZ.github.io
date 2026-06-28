@@ -1,107 +1,122 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,100:1d4ed8&height=220&section=header&text=Prasad%20Pawar&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=35" alt="header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,45:2563eb,100:14b8a6&height=230&section=header&text=Prasad%20Pawar&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Java%20%7C%20Python%20%7C%20Data%20Science%20%7C%20Clean%20Project%20Building&descSize=16&descAlignY=56" alt="Prasad Pawar profile banner" />
 </div>
 
 <div align="center">
 
-### Full-Stack Learner | Data Science Enthusiast | Builder of small useful tools
+### I turn rough ideas into clean, working projects.
 
 <p>
-  I like turning rough ideas into clean, working projects. Most of my work lives in Java, Python, and data-focused notebooks.
+  Building practical Java, Python, automation, and data science projects with readable code, clear READMEs, and repos that are easy to run.
 </p>
 
 <p>
-  <a href="https://github.com/PrasadPawarZ">
-    <img src="https://img.shields.io/badge/GitHub-PrasadPawarZ-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub badge" />
-  </a>
   <a href="mailto:psprasad567@gmail.com">
-    <img src="https://img.shields.io/badge/Email-psprasad567%40gmail.com-2563eb?style=for-the-badge&logo=gmail&logoColor=white" alt="Email badge" />
+    <img src="https://img.shields.io/badge/Email-psprasad567%40gmail.com-0f766e?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
   </a>
+  <a href="https://github.com/PrasadPawarZ">
+    <img src="https://img.shields.io/badge/GitHub-PrasadPawarZ-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <img src="https://komarev.com/ghpvc/?username=PrasadPawarZ&style=for-the-badge&color=2563eb" alt="Profile views" />
 </p>
 
 </div>
 
+## What I Build
+
 <table>
   <tr>
-    <td width="55%" valign="top">
-
-### About Me
-
-- I build beginner-friendly projects and keep them tidy.
-- I enjoy data science, automation, and simple desktop or web utilities.
-- I am cleaning and curating my GitHub profile so the best work is easy to find.
-- I prefer practical projects that are useful, readable, and easy to improve.
-
-### Current Focus
-
-- Refactoring older projects
-- Making repositories easier to run
-- Adding clean README files and ignore rules
-- Keeping archived versions separate from active projects
-
+    <td width="33%" valign="top">
+      <h3>Application Projects</h3>
+      <p>Small but complete apps with setup notes, sensible structure, and practical use cases.</p>
+      <p><b>Focus:</b> Java, CLI tools, desktop workflows</p>
     </td>
-    <td width="45%" valign="top">
-
-### GitHub Stats
-
-<img src="https://github-readme-stats.vercel.app/api?username=PrasadPawarZ&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
-<br/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PrasadPawarZ&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
-
+    <td width="33%" valign="top">
+      <h3>Data Projects</h3>
+      <p>Notebook-based analysis and prediction projects with datasets, observations, and reproducible steps.</p>
+      <p><b>Focus:</b> EDA, classification, prediction</p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>Project Cleanup</h3>
+      <p>Refining older code into cleaner repos with README files, ignore rules, and active/archive separation.</p>
+      <p><b>Focus:</b> readability, structure, maintainability</p>
     </td>
   </tr>
 </table>
 
-## Featured Projects
+## Featured Work
+
+<div align="center">
+  <a href="https://github.com/PrasadPawarZ/Hand-Sign-Detection">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=PrasadPawarZ&repo=Hand-Sign-Detection&theme=tokyonight&hide_border=true" alt="Hand Sign Detection" />
+  </a>
+  <a href="https://github.com/PrasadPawarZ/Face-Recognition-Java">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=PrasadPawarZ&repo=Face-Recognition-Java&theme=tokyonight&hide_border=true" alt="Face Recognition Java" />
+  </a>
+  <a href="https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=PrasadPawarZ&repo=Credit-Card-Fraud-Detection&theme=tokyonight&hide_border=true" alt="Credit Card Fraud Detection" />
+  </a>
+  <a href="https://github.com/PrasadPawarZ/Olympic-Data-EDA">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=PrasadPawarZ&repo=Olympic-Data-EDA&theme=tokyonight&hide_border=true" alt="Olympic Data EDA" />
+  </a>
+</div>
+
+## Project Index
 
 <table>
   <tr>
     <td width="50%" valign="top">
-
-### Active / Curated
-
-- [ajp-car](https://github.com/PrasadPawarZ/ajp-car)
-- [Face-Recognition-Java](https://github.com/PrasadPawarZ/Face-Recognition-Java)
-- [Hand-Sign-Detection](https://github.com/PrasadPawarZ/Hand-Sign-Detection)
-- [Image-Encryptor](https://github.com/PrasadPawarZ/Image-Encryptor)
-- [Network-Encrypt-Decrypt](https://github.com/PrasadPawarZ/Network-Encrypt-Decrypt)
-
+      <h3>Apps and Tools</h3>
+      <ul>
+        <li><a href="https://github.com/PrasadPawarZ/ajp-car">ajp-car</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Image-Encryptor">Image-Encryptor</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Network-Encrypt-Decrypt">Network-Encrypt-Decrypt</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Car_Reservation_System">Car_Reservation_System</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Train_Reservation_System">Train_Reservation_System</a></li>
+      </ul>
     </td>
     <td width="50%" valign="top">
-
-### Data / ML Projects
-
-- [Credit-Card-Fraud-Detection](https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection)
-- [Diabetes-Prediction-Project](https://github.com/PrasadPawarZ/Diabetes-Prediction-Project)
-- [Olympic-Data-EDA](https://github.com/PrasadPawarZ/Olympic-Data-EDA)
-- [Second-Hand-Car-Price-Prediction](https://github.com/PrasadPawarZ/Second-Hand-Car-Price-Prediction)
-- [Survival-Chances-in-an-Accident](https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident)
-
+      <h3>Data and ML</h3>
+      <ul>
+        <li><a href="https://github.com/PrasadPawarZ/Diabetes-Prediction-Project">Diabetes-Prediction-Project</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Second-Hand-Car-Price-Prediction">Second-Hand-Car-Price-Prediction</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident">Survival-Chances-in-an-Accident</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Olympic-Data-EDA">Olympic-Data-EDA</a></li>
+        <li><a href="https://github.com/PrasadPawarZ/Diabetes-Prediction-Archive">Diabetes-Prediction-Archive</a></li>
+      </ul>
     </td>
   </tr>
 </table>
 
-## Skills and Tools
+## Tech Stack
 
-<p>
+<p align="center">
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter" />
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV" />
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
   <img src="https://img.shields.io/badge/GitHub-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code" />
 </p>
 
-## Clean Profile Notes
-
-This profile now favors the newer, polished projects first.
-Older duplicate work is kept separate as archives so the page feels curated instead of crowded.
-
-## Contact
-
-- Email: [psprasad567@gmail.com](mailto:psprasad567@gmail.com)
-- GitHub: [@PrasadPawarZ](https://github.com/PrasadPawarZ)
+## Profile Snapshot
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1d4ed8,100:0f172a&height=140&section=footer" alt="footer" />
+  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=PrasadPawarZ&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
+  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com/?user=PrasadPawarZ&theme=tokyonight&hide_border=true" alt="GitHub streak" />
+  <br/>
+  <img width="48%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PrasadPawarZ&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+</div>
+
+## How I Like To Work
+
+- Keep projects runnable.
+- Write README files that explain setup without guessing.
+- Separate polished work from archived experiments.
+- Improve projects in small, steady passes until they are easy to understand.
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:14b8a6,55:2563eb,100:0f172a&height=130&section=footer" alt="footer" />
 </div>
