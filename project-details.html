@@ -78,7 +78,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .58fr);
       gap: 28px;
       align-items: stretch;
       margin-bottom: 32px;
@@ -164,7 +164,7 @@
     }
 
     .hero-preview {
-      min-height: 320px;
+      min-height: 260px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -267,7 +267,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      grid-template-columns: 1fr;
       gap: 24px;
     }
 
@@ -281,15 +281,20 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
     }
 
     .shot {
       background: var(--panel-2);
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 10px;
+      padding: 8px;
+    }
+
+    .shot img {
+      height: 190px;
+      object-fit: contain;
     }
 
     .shot figcaption {
@@ -302,6 +307,7 @@
 
     .readme {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 18px;
       color: var(--soft);
     }
@@ -376,13 +382,13 @@
 
     <section class="layout">
       <article class="section-card">
-        <h2>Screenshot Gallery</h2>
-        <div class="gallery" id="gallery"></div>
+        <h2>README & Project Details</h2>
+        <div class="readme" id="readme"></div>
       </article>
 
       <article class="section-card">
-        <h2>README & Project Details</h2>
-        <div class="readme" id="readme"></div>
+        <h2>Result Screenshots & Gallery</h2>
+        <div class="gallery" id="gallery"></div>
       </article>
     </section>
   </main>
@@ -397,9 +403,7 @@
         summary: 'An interactive browser game where players inspect Street View locations across Indian cities and decide whether visible trash is present.',
         tech: ['Node.js', 'Express', 'JavaScript', 'Google Maps API'],
         gallery: [
-          ['portfolio-assets/Trash-map/project-trash-map.png', 'Start screen and game prompt'],
-          ['portfolio-assets/Trash-map/trash-map-desktop.png', 'Desktop gameplay view captured locally'],
-          ['portfolio-assets/Trash-map/trash-map-mobile.png', 'Mobile responsive gameplay view']
+          ['portfolio-assets/Trash-map/project-trash-map.png', 'Original project screenshot']
         ],
         readme: {
           Overview: 'The game serves a browser UI and API routes from the server app, while a proxy signs and forwards Google Maps and Street View requests.',
@@ -415,6 +419,8 @@
         summary: 'A full-stack AI project for Alzheimer prediction using MRI images, CNN classification, patient records, and prediction history workflows.',
         tech: ['Python', 'FastAPI', 'React', 'TensorFlow', 'CNN', 'OpenCV', 'PostgreSQL', 'Docker'],
         gallery: [
+          ['portfolio-assets/projects/alzheimers-disease-prediction/data-features.svg', 'Replaceable MRI dataset/features screenshot'],
+          ['portfolio-assets/projects/alzheimers-disease-prediction/model-results.svg', 'Replaceable model metrics/result screenshot'],
           ['portfolio-assets/Alzhaimer-Detection/Picture1.jpg', 'Landing and project entry view'],
           ['portfolio-assets/Alzhaimer-Detection/Picture2.jpg', 'Prediction workflow screen'],
           ['portfolio-assets/Alzhaimer-Detection/Picture3.jpg', 'Patient or result management view'],
@@ -435,7 +441,9 @@
         summary: 'A supervised machine-learning notebook that predicts diabetes outcomes from a healthcare dataset after preprocessing and model evaluation.',
         tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Jupyter'],
         gallery: [
-          ['portfolio-assets/projects/diabetes-prediction/diabetes-1.png', 'Notebook output chart extracted from the project']
+          ['portfolio-assets/projects/diabetes-prediction/data-features.svg', 'Dataset columns and sample feature values'],
+          ['portfolio-assets/projects/diabetes-prediction/model-results.svg', 'Accuracy, precision, recall, and F1 result summary'],
+          ['portfolio-assets/projects/diabetes-prediction/diabetes-1.png', 'Confusion matrix from the notebook']
         ],
         readme: {
           Overview: 'The repository contains DiabetesPrediction.ipynb and diabetes.csv for an end-to-end classification workflow.',
@@ -451,7 +459,9 @@
         summary: 'A predictive notebook that estimates survival probability in accident cases using train/test CSV data and classification modeling.',
         tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Jupyter'],
         gallery: [
-          ['portfolio-assets/projects/survival-chances-accident/survival-1.png', 'Notebook output chart extracted from the project']
+          ['portfolio-assets/projects/survival-chances-accident/data-features.svg', 'Accident dataset feature overview'],
+          ['portfolio-assets/projects/survival-chances-accident/model-results.svg', 'Decision tree accuracy and F1 result summary'],
+          ['portfolio-assets/projects/survival-chances-accident/survival-1.png', 'Confusion matrix from the notebook']
         ],
         readme: {
           Overview: 'The project includes a notebook plus Accident_train.csv and Accident_test.csv for data exploration and prediction.',
@@ -466,7 +476,10 @@
         repo: 'https://github.com/PrasadPawarZ/Second-Hand-Car-Price-Prediction',
         summary: 'A regression-focused project for predicting used-car market prices from vehicle attributes such as age, mileage, brand, and fuel type.',
         tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Jupyter'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/second-hand-car-price-prediction/data-features.svg', 'Replaceable dataset/features screenshot'],
+          ['portfolio-assets/projects/second-hand-car-price-prediction/model-results.svg', 'Replaceable regression metrics/result screenshot']
+        ],
         visualLabel: 'Regression Notebook',
         readme: {
           Overview: 'The repository is structured around a single notebook for used-car price modeling and performance comparison.',
@@ -482,13 +495,15 @@
         summary: 'A classification notebook for detecting fraudulent credit-card transactions with attention to class imbalance and evaluation metrics.',
         tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'SMOTE', 'Jupyter'],
         gallery: [
+          ['portfolio-assets/projects/credit-card-fraud-detection/data-features.svg', 'Credit card dataset feature overview'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/model-results.svg', 'Accuracy and F1 score summary'],
           ['portfolio-assets/projects/credit-card-fraud-detection/fraud-1.png', 'Logistic regression confusion matrix'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-2.png', 'Model evaluation visual'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-3.png', 'Classifier comparison visual'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-4.png', 'Notebook output visual'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-5.png', 'Notebook output visual'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-6.png', 'Notebook output visual'],
-          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-7.png', 'Notebook output visual']
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-2.png', 'Naive Bayes confusion matrix'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-3.png', 'F1 score comparison chart'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-4.png', 'ROC curve comparison'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-5.png', 'Precision-recall curve'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-6.png', 'Top feature importance chart'],
+          ['portfolio-assets/projects/credit-card-fraud-detection/fraud-7.png', 'Cross-validation accuracy comparison']
         ],
         readme: {
           Overview: 'The repository includes a notebook and UCI_Credit_Card.csv for fraud analysis and classification modeling.',
@@ -504,6 +519,8 @@
         summary: 'An exploratory notebook that studies Olympic athletes, medals, participation trends, and country-level performance patterns through charts and visual analysis.',
         tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
         gallery: [
+          ['portfolio-assets/projects/olympic-eda/data-features.svg', 'Olympic dataset feature overview'],
+          ['portfolio-assets/projects/olympic-eda/result-summary.svg', 'EDA result summary'],
           ['portfolio-assets/projects/olympic-eda/olympic-1.png', 'Olympic notebook visual 1'],
           ['portfolio-assets/projects/olympic-eda/olympic-2.png', 'Olympic notebook visual 2'],
           ['portfolio-assets/projects/olympic-eda/olympic-3.png', 'Olympic notebook visual 3'],
@@ -530,7 +547,10 @@
         repo: '',
         summary: 'A deep-learning visualization project focused on understanding what convolutional filters and activation layers learn inside a CNN.',
         tech: ['Python', 'TensorFlow', 'Matplotlib', 'NumPy'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/visualizing-cnn-filters/result-placeholder.svg', 'Replaceable CNN result screenshot'],
+          ['portfolio-assets/projects/visualizing-cnn-filters/workflow-placeholder.svg', 'Replaceable CNN workflow screenshot']
+        ],
         visualLabel: 'CNN Filter Visuals',
         readme: {
           Overview: 'The project explains CNN internals by visualizing filters, feature maps, and layer activations.',
@@ -545,7 +565,10 @@
         repo: 'https://github.com/PrasadPawarZ/Daily-Dairy',
         summary: 'A personal digital diary web app for writing, editing, and browsing journal entries in a clean responsive interface.',
         tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/daily-diary/result-placeholder.svg', 'Replaceable web app result screenshot'],
+          ['portfolio-assets/projects/daily-diary/workflow-placeholder.svg', 'Replaceable diary workflow screenshot']
+        ],
         visualLabel: 'Web App Preview',
         readme: {
           Overview: 'The app focuses on a simple journal-entry workflow with a browser-first UI.',
@@ -560,7 +583,10 @@
         repo: '',
         summary: 'An automated evaluation pipeline that reduces manual result processing and generates academic performance reports.',
         tech: ['Python', 'Excel', 'Pandas', 'Data Analysis'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/student-result-evaluation/result-placeholder.svg', 'Replaceable report result screenshot'],
+          ['portfolio-assets/projects/student-result-evaluation/workflow-placeholder.svg', 'Replaceable analytics workflow screenshot']
+        ],
         visualLabel: 'Analytics Workflow',
         readme: {
           Overview: 'The system processes result data and creates summaries for course outcomes, faculty analysis, and departmental performance.',
@@ -575,7 +601,10 @@
         repo: 'https://github.com/PrasadPawarZ/ajp-car',
         summary: 'A Java Swing desktop application for managing rentals, availability, customer records, and billing.',
         tech: ['Java', 'Swing', 'Maven', 'Microsoft Access', 'OOP'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/car-rental-system/result-placeholder.svg', 'Replaceable Java GUI result screenshot'],
+          ['portfolio-assets/projects/car-rental-system/workflow-placeholder.svg', 'Replaceable car rental workflow screenshot']
+        ],
         visualLabel: 'Java Swing App',
         readme: {
           Overview: 'The project uses a Java Swing UI and a Microsoft Access database for car rental management.',
@@ -590,7 +619,10 @@
         repo: 'https://github.com/PrasadPawarZ/Train_Reservation_System',
         summary: 'A GUI-based reservation app for booking seats, checking PNR status, cancelling tickets, and browsing train schedules.',
         tech: ['Java', 'Swing', 'OOP'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/train-reservation-system/result-placeholder.svg', 'Replaceable reservation result screenshot'],
+          ['portfolio-assets/projects/train-reservation-system/workflow-placeholder.svg', 'Replaceable train booking workflow screenshot']
+        ],
         visualLabel: 'Reservation UI',
         readme: {
           Overview: 'A desktop project demonstrating object-oriented design and Swing-based booking workflows.',
@@ -605,7 +637,10 @@
         repo: 'https://github.com/PrasadPawarZ/ATM_Interface',
         summary: 'A simulated ATM application with PIN login, withdrawals, deposits, balance enquiry, and mini statement flow.',
         tech: ['Java', 'Swing', 'OOP'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/atm-interface/result-placeholder.svg', 'Replaceable ATM result screenshot'],
+          ['portfolio-assets/projects/atm-interface/workflow-placeholder.svg', 'Replaceable ATM workflow screenshot']
+        ],
         visualLabel: 'ATM Flow',
         readme: {
           Overview: 'The app demonstrates a banking transaction workflow in a desktop Java interface.',
@@ -620,7 +655,10 @@
         repo: '',
         summary: 'A banking operations application concept covering account creation, fund transfer, transaction history, and balance management.',
         tech: ['Android', 'Java', 'OOP'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/bank-management-system/result-placeholder.svg', 'Replaceable banking result screenshot'],
+          ['portfolio-assets/projects/bank-management-system/workflow-placeholder.svg', 'Replaceable banking workflow screenshot']
+        ],
         visualLabel: 'Banking App',
         readme: {
           Overview: 'The project presents core banking operations through a Java-based mobile app structure.',
@@ -635,7 +673,10 @@
         repo: 'https://github.com/PrasadPawarZ/Guess_No_Game',
         summary: 'An interactive number guessing game with difficulty, score tracking, and hint logic.',
         tech: ['Java', 'Swing'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/guess-the-number-game/result-placeholder.svg', 'Replaceable game result screenshot'],
+          ['portfolio-assets/projects/guess-the-number-game/workflow-placeholder.svg', 'Replaceable game workflow screenshot']
+        ],
         visualLabel: 'Game UI',
         readme: {
           Overview: 'A beginner-friendly Java game project demonstrating interaction loops and simple state management.',
@@ -650,7 +691,10 @@
         repo: '',
         summary: 'A Python implementation of RSA key-pair generation concepts using prime selection, modular arithmetic, and encryption fundamentals.',
         tech: ['Python', 'Cryptography', 'Algorithms'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/rsa-key-pair-generation/result-placeholder.svg', 'Replaceable RSA terminal result screenshot'],
+          ['portfolio-assets/projects/rsa-key-pair-generation/workflow-placeholder.svg', 'Replaceable RSA workflow screenshot']
+        ],
         visualLabel: 'Security Algorithm',
         readme: {
           Overview: 'The project demonstrates asymmetric key generation and core RSA ideas in code.',
@@ -665,7 +709,10 @@
         repo: 'https://github.com/PrasadPawarZ/Hotel_Room_Booking',
         summary: 'A C++ hotel management application for room booking, check-in and checkout operations, customer records, and billing.',
         tech: ['C++', 'OOP', 'Data Structures'],
-        gallery: [],
+        gallery: [
+          ['portfolio-assets/projects/hotel-management-system/result-placeholder.svg', 'Replaceable hotel result screenshot'],
+          ['portfolio-assets/projects/hotel-management-system/workflow-placeholder.svg', 'Replaceable hotel workflow screenshot']
+        ],
         visualLabel: 'Console App',
         readme: {
           Overview: 'The project uses C++ OOP concepts to manage hotel rooms and booking data.',
@@ -694,12 +741,7 @@
     `;
 
     const heroPreview = document.getElementById('heroPreview');
-    const firstImage = project.gallery[0];
-    if (firstImage) {
-      heroPreview.innerHTML = `<img src="${firstImage[0]}" alt="${project.title} main screenshot">`;
-    } else {
-      heroPreview.innerHTML = renderVisual(project.visualLabel || project.category, project.title);
-    }
+    heroPreview.innerHTML = renderVisual(project.visualLabel || project.category, project.title);
 
     const gallery = document.getElementById('gallery');
     if (project.gallery.length) {

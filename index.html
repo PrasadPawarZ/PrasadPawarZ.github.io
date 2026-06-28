@@ -813,35 +813,20 @@
   <div class="projects-grid">
 
     <div class="proj-card" data-cat="web">
-      <div class="proj-gallery">
-        <img class="proj-shot" src="portfolio-assets/Trash-map/project-trash-map.png" alt="Trash View on Maps start screen">
-        <img class="proj-shot" src="portfolio-assets/Trash-map/trash-map-desktop.png" alt="Trash View on Maps desktop screenshot">
-        <img class="proj-shot" src="portfolio-assets/Trash-map/trash-map-mobile.png" alt="Trash View on Maps mobile screenshot">
-      </div>
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(6,182,212,.12)">TV</div>
-        <span class="proj-cat cat-web">Live Screenshots</span>
+        <span class="proj-cat cat-web">Web Game</span>
       </div>
       <div class="proj-title">Trash View on Maps</div>
-      <div class="proj-desc">A browser game that drops players into Indian city locations and asks them to identify visible trash. These screenshots were captured from the project running locally.</div>
+      <div class="proj-desc">A browser game that drops players into Indian city locations and asks them to identify visible trash. The detail page keeps the single available project screenshot.</div>
       <div class="proj-tech">
         <span class="tech-pill">Node.js</span><span class="tech-pill">Express</span>
         <span class="tech-pill">JavaScript</span><span class="tech-pill">Google Maps API</span>
-      </div>
-      <div class="proj-links">
-        <a class="plink" href="portfolio-assets/Trash-map/project-trash-map.png" target="_blank" rel="noopener">View screenshot</a>
       </div>
     </div>
 
     <!-- AI/ML -->
     <div class="proj-card" data-cat="ai">
-      <div class="proj-gallery">
-        <img class="proj-shot" src="portfolio-assets/Alzhaimer-Detection/Picture1.jpg" alt="Alzheimer detection project screenshot 1">
-        <img class="proj-shot" src="portfolio-assets/Alzhaimer-Detection/Picture2.jpg" alt="Alzheimer detection project screenshot 2">
-        <img class="proj-shot" src="portfolio-assets/Alzhaimer-Detection/Picture3.jpg" alt="Alzheimer detection project screenshot 3">
-        <img class="proj-shot" src="portfolio-assets/Alzhaimer-Detection/Picture4.jpg" alt="Alzheimer detection project screenshot 4">
-        <img class="proj-shot" src="portfolio-assets/Alzhaimer-Detection/Picture5.jpg" alt="Alzheimer detection project screenshot 5">
-      </div>
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(124,58,237,.15)">🧠</div>
         <span class="proj-cat cat-ai">AI / ML</span>
@@ -1287,21 +1272,21 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 const projectShowcase = {
   'Trash View on Maps': {
     id: 'trash-view-on-maps',
-    preview: 'portfolio-assets/Trash-map/project-trash-map.png'
+    visual: 'Web Game'
   },
   "Alzheimer's Disease Prediction System": {
     id: 'alzheimers-disease-prediction',
-    preview: 'portfolio-assets/Alzhaimer-Detection/Picture1.jpg'
+    visual: 'AI Healthcare App'
   },
   'Diabetes Prediction': {
     id: 'diabetes-prediction',
-    preview: 'portfolio-assets/projects/diabetes-prediction/diabetes-1.png',
-    repo: 'https://github.com/PrasadPawarZ/Diabetes-Prediction-Project'
+    repo: 'https://github.com/PrasadPawarZ/Diabetes-Prediction-Project',
+    visual: 'ML Notebook'
   },
   'Survival Chances in Accident': {
     id: 'survival-chances-accident',
-    preview: 'portfolio-assets/projects/survival-chances-accident/survival-1.png',
-    repo: 'https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident'
+    repo: 'https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident',
+    visual: 'Prediction Notebook'
   },
   'Second Hand Car Price Prediction': {
     id: 'second-hand-car-price-prediction',
@@ -1310,13 +1295,13 @@ const projectShowcase = {
   },
   'Credit Card Fraud Detection': {
     id: 'credit-card-fraud-detection',
-    preview: 'portfolio-assets/projects/credit-card-fraud-detection/fraud-1.png',
-    repo: 'https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection'
+    repo: 'https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection',
+    visual: 'Fraud ML Notebook'
   },
   'Olympic Data EDA': {
     id: 'olympic-data-eda',
-    preview: 'portfolio-assets/projects/olympic-eda/olympic-1.png',
-    repo: 'https://github.com/PrasadPawarZ/Olympic-Data-EDA'
+    repo: 'https://github.com/PrasadPawarZ/Olympic-Data-EDA',
+    visual: 'EDA Notebook'
   },
   'Visualizing Filters of a CNN': {
     id: 'visualizing-cnn-filters',
@@ -1374,31 +1359,16 @@ const projectShowcase = {
     const item = projectShowcase[title];
     if (!item) return;
 
-    const gallery = card.querySelector('.proj-gallery');
-    if (gallery) {
-      const firstShot = gallery.querySelector('.proj-shot');
-      if (firstShot) gallery.replaceWith(firstShot);
-    }
+    card.querySelectorAll('.proj-gallery, .proj-shot, .proj-visual').forEach(el => el.remove());
 
-    let shot = card.querySelector('.proj-shot');
-    if (item.preview) {
-      if (!shot) {
-        shot = document.createElement('img');
-        shot.className = 'proj-shot';
-        card.insertBefore(shot, card.firstElementChild);
-      }
-      shot.src = item.preview;
-      shot.alt = `${title} preview screenshot`;
-    } else if (!shot) {
-      const visual = document.createElement('div');
-      visual.className = 'proj-visual';
-      visual.innerHTML = `
-        <div class="proj-visual-kicker">${item.visual || 'Project Preview'}</div>
-        <div class="proj-visual-title">${title}</div>
-        <div class="proj-visual-bars"><span></span><span></span><span></span></div>
-      `;
-      card.insertBefore(visual, card.firstElementChild);
-    }
+    const visual = document.createElement('div');
+    visual.className = 'proj-visual';
+    visual.innerHTML = `
+      <div class="proj-visual-kicker">${item.visual || 'Project Preview'}</div>
+      <div class="proj-visual-title">${title}</div>
+      <div class="proj-visual-bars"><span></span><span></span><span></span></div>
+    `;
+    card.insertBefore(visual, card.firstElementChild);
 
     let links = card.querySelector('.proj-links');
     if (!links) {

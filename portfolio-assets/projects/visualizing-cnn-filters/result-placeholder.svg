@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#06111f"/>
+      <stop offset="0.55" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="25%" cy="15%" r="70%">
+      <stop offset="0" stop-color="#f472b6" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f472b6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1120" height="640" rx="34" fill="url(#bg)"/>
+  <rect width="1120" height="640" rx="34" fill="url(#glow)"/>
+  <circle cx="965" cy="84" r="156" fill="#f472b6" opacity=".12"/>
+  <circle cx="930" cy="590" r="240" fill="#34d399" opacity=".08"/>
+  <text x="58" y="74" fill="#f472b6" font-size="18" letter-spacing="4" font-family="JetBrains Mono, Consolas, monospace">FEATURE MAP / FILTER VISUALIZATION PLACEHOLDER</text>
+  <text x="58" y="132" fill="#f8fafc" font-size="46" font-weight="700" font-family="Space Grotesk, Arial, sans-serif">CNN Filter Result</text>
+  <rect x="58" y="165" width="1004" height="2" fill="rgba(255,255,255,.12)"/>
+  <g>
+      <rect x="58" y="213" width="1004" height="34" rx="12" fill="rgba(255,255,255,.075)"/>
+      <text x="82" y="235" fill="#dbeafe" font-size="18" font-family="JetBrains Mono, Consolas, monospace">Replace with feature-map grid</text>
+    </g>
+<g>
+      <rect x="58" y="255" width="1004" height="34" rx="12" fill="rgba(255,255,255,.045)"/>
+      <text x="82" y="277" fill="#dbeafe" font-size="18" font-family="JetBrains Mono, Consolas, monospace">Add filter activation image</text>
+    </g>
+<g>
+      <rect x="58" y="297" width="1004" height="34" rx="12" fill="rgba(255,255,255,.075)"/>
+      <text x="82" y="319" fill="#dbeafe" font-size="18" font-family="JetBrains Mono, Consolas, monospace">Add model/layer notes</text>
+    </g>
+  <g>
+      <rect x="58" y="520" width="226" height="82" rx="20" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
+      <text x="76" y="552" fill="#94a3b8" font-size="16" font-family="JetBrains Mono, Consolas, monospace">Type</text>
+      <text x="76" y="585" fill="#f472b6" font-size="30" font-weight="700" font-family="Space Grotesk, Arial, sans-serif">Result</text>
+    </g>
+<g>
+      <rect x="308" y="520" width="226" height="82" rx="20" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
+      <text x="326" y="552" fill="#94a3b8" font-size="16" font-family="JetBrains Mono, Consolas, monospace">Status</text>
+      <text x="326" y="585" fill="#f472b6" font-size="30" font-weight="700" font-family="Space Grotesk, Arial, sans-serif">Replace</text>
+    </g>
+<g>
+      <rect x="558" y="520" width="226" height="82" rx="20" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
+      <text x="576" y="552" fill="#94a3b8" font-size="16" font-family="JetBrains Mono, Consolas, monospace">Ready</text>
+      <text x="576" y="585" fill="#f472b6" font-size="30" font-weight="700" font-family="Space Grotesk, Arial, sans-serif">Yes</text>
+    </g>
+</svg>
