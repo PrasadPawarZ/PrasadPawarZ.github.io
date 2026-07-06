@@ -249,14 +249,53 @@
       position: relative;
     }
 
+    .preview.theme-ai {
+      background:
+        radial-gradient(circle at 18% 24%, rgba(167,139,250,.34), transparent 28%),
+        radial-gradient(circle at 78% 16%, rgba(6,182,212,.24), transparent 26%),
+        linear-gradient(135deg, rgba(34,22,71,.96), rgba(11,17,32,.88));
+    }
+
+    .preview.theme-web {
+      background:
+        linear-gradient(135deg, rgba(6,182,212,.32), transparent 32%),
+        radial-gradient(circle at 78% 28%, rgba(20,184,166,.3), transparent 28%),
+        linear-gradient(140deg, rgba(4,35,50,.96), rgba(10,17,31,.9));
+    }
+
+    .preview.theme-java {
+      background:
+        radial-gradient(circle at 18% 78%, rgba(16,185,129,.3), transparent 30%),
+        linear-gradient(120deg, rgba(245,158,11,.24), transparent 34%),
+        linear-gradient(135deg, rgba(11,38,32,.96), rgba(12,18,30,.9));
+    }
+
+    .preview.theme-data {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,.32), transparent 28%),
+        linear-gradient(145deg, rgba(14,165,233,.24), transparent 36%),
+        linear-gradient(135deg, rgba(9,25,54,.96), rgba(12,18,30,.9));
+    }
+
+    .preview.theme-systems {
+      background:
+        radial-gradient(circle at 82% 20%, rgba(245,158,11,.3), transparent 26%),
+        linear-gradient(135deg, rgba(148,65,12,.18), transparent 34%),
+        linear-gradient(135deg, rgba(38,28,17,.96), rgba(12,18,30,.9));
+    }
+
     .preview::after {
       content: "";
       position: absolute;
-      inset: auto -20% -38% 20%;
-      height: 88px;
-      background: linear-gradient(90deg, rgba(6,182,212,.18), rgba(16,185,129,.14));
-      filter: blur(24px);
-      transform: rotate(-8deg);
+      inset: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .32;
+      mask-image: linear-gradient(135deg, #000, transparent 72%);
     }
 
     .preview-label,
@@ -273,6 +312,20 @@
       z-index: 1;
     }
 
+    .preview-mark {
+      position: absolute;
+      right: 14px;
+      bottom: 8px;
+      z-index: 1;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 7vw, 4.6rem);
+      font-weight: 700;
+      line-height: .85;
+      letter-spacing: -.08em;
+      color: rgba(255,255,255,.16);
+      text-shadow: 0 10px 35px rgba(0,0,0,.35);
+    }
+
     .preview-title {
       max-width: 16rem;
       font-family: var(--font-display);
@@ -282,23 +335,27 @@
       z-index: 1;
     }
 
-    .preview-lines {
-      display: grid;
+    .preview-dots {
+      display: flex;
       gap: 7px;
       position: relative;
       z-index: 1;
     }
 
-    .preview-lines span {
+    .preview-dots span {
       display: block;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
-      background: rgba(255,255,255,.1);
+      background: rgba(255,255,255,.42);
+      box-shadow: 0 0 18px rgba(255,255,255,.18);
     }
 
-    .preview-lines span:nth-child(1) { width: 82%; }
-    .preview-lines span:nth-child(2) { width: 58%; }
-    .preview-lines span:nth-child(3) { width: 70%; }
+    .preview.theme-ai .preview-dots span { background: #c4b5fd; }
+    .preview.theme-web .preview-dots span { background: #67e8f9; }
+    .preview.theme-java .preview-dots span { background: #86efac; }
+    .preview.theme-data .preview-dots span { background: #93c5fd; }
+    .preview.theme-systems .preview-dots span { background: #fcd34d; }
 
     .card-top {
       display: flex;
@@ -376,6 +433,7 @@
       <nav class="nav-actions" aria-label="Project navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="index.html#projects">Featured</a>
+        <a class="nav-link" href="certificates.html">Certificates</a>
         <a class="nav-link" href="index.html#contact">Contact</a>
         <a class="nav-link" href="https://github.com/PrasadPawarZ" target="_blank" rel="noopener">GitHub</a>
       </nav>
@@ -602,16 +660,19 @@
     function renderProjects(filter = "all") {
       grid.innerHTML = projects.map(project => {
         const hidden = filter !== "all" && project.track !== filter ? " hidden" : "";
+        const theme = projectTheme(project);
+        const mark = projectThemeMark(theme);
         const repo = project.repo
           ? `<a class="detail-link" href="${project.repo}" target="_blank" rel="noopener">GitHub repo</a>`
           : "";
         const tags = project.tech.map(item => `<span class="tag">${item}</span>`).join("");
         return `
           <article class="project-card${hidden}" data-track="${project.track}">
-            <div class="preview">
+            <div class="preview theme-${theme}">
               <div class="preview-label">${project.visual}</div>
+              <div class="preview-mark">${mark}</div>
               <div class="preview-title">${project.title}</div>
-              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-dots"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="card-top">
               <span class="category">${project.category}</span>
@@ -627,6 +688,25 @@
           </article>
         `;
       }).join("");
+    }
+
+    function projectTheme(project) {
+      const text = `${project.title} ${project.category} ${project.tech.join(" ")}`.toLowerCase();
+      if (text.includes("olympic") || text.includes("result evaluation") || text.includes("data analysis")) return "data";
+      if (project.track === "systems") return "systems";
+      if (project.track === "java") return "java";
+      if (project.track === "web") return "web";
+      return "ai";
+    }
+
+    function projectThemeMark(theme) {
+      return {
+        ai: "AI",
+        web: "WEB",
+        java: "JAVA",
+        data: "DATA",
+        systems: "SYS"
+      }[theme] || "LAB";
     }
 
     renderProjects();

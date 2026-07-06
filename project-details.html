@@ -216,16 +216,53 @@
       overflow: hidden;
     }
 
+    .visual-panel.theme-ai {
+      background:
+        radial-gradient(circle at 18% 24%, rgba(167,139,250,.34), transparent 28%),
+        radial-gradient(circle at 78% 16%, rgba(34,211,238,.24), transparent 26%),
+        linear-gradient(135deg, rgba(34,22,71,.96), rgba(11,17,32,.9));
+    }
+
+    .visual-panel.theme-web {
+      background:
+        linear-gradient(135deg, rgba(34,211,238,.32), transparent 32%),
+        radial-gradient(circle at 78% 28%, rgba(52,211,153,.3), transparent 28%),
+        linear-gradient(140deg, rgba(4,35,50,.96), rgba(10,17,31,.9));
+    }
+
+    .visual-panel.theme-java {
+      background:
+        radial-gradient(circle at 18% 78%, rgba(52,211,153,.3), transparent 30%),
+        linear-gradient(120deg, rgba(245,158,11,.24), transparent 34%),
+        linear-gradient(135deg, rgba(11,38,32,.96), rgba(12,18,30,.9));
+    }
+
+    .visual-panel.theme-data {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,.32), transparent 28%),
+        linear-gradient(145deg, rgba(14,165,233,.24), transparent 36%),
+        linear-gradient(135deg, rgba(9,25,54,.96), rgba(12,18,30,.9));
+    }
+
+    .visual-panel.theme-systems {
+      background:
+        radial-gradient(circle at 82% 20%, rgba(245,158,11,.3), transparent 26%),
+        linear-gradient(135deg, rgba(148,65,12,.18), transparent 34%),
+        linear-gradient(135deg, rgba(38,28,17,.96), rgba(12,18,30,.9));
+    }
+
     .visual-panel::after {
       content: '';
       position: absolute;
-      right: -18%;
-      bottom: -28%;
-      width: 250px;
-      height: 250px;
-      border-radius: 999px;
-      background: rgba(34,211,238,.12);
-      filter: blur(14px);
+      inset: 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: .32;
+      mask-image: linear-gradient(135deg, #000, transparent 72%);
     }
 
     .visual-label {
@@ -238,6 +275,18 @@
       z-index: 1;
     }
 
+    .visual-mark {
+      position: absolute;
+      right: 24px;
+      bottom: 12px;
+      z-index: 1;
+      font-size: clamp(3.6rem, 12vw, 7rem);
+      line-height: .85;
+      letter-spacing: -.08em;
+      color: rgba(255,255,255,.15);
+      text-shadow: 0 14px 42px rgba(0,0,0,.38);
+    }
+
     .visual-title {
       font-size: clamp(1.6rem, 5vw, 3.4rem);
       line-height: .95;
@@ -247,23 +296,27 @@
       z-index: 1;
     }
 
-    .visual-lines {
-      display: grid;
+    .visual-dots {
+      display: flex;
       gap: 9px;
       position: relative;
       z-index: 1;
     }
 
-    .visual-lines span {
+    .visual-dots span {
       display: block;
+      width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.1);
+      background: rgba(255,255,255,.42);
+      box-shadow: 0 0 20px rgba(255,255,255,.18);
     }
 
-    .visual-lines span:nth-child(1) { width: 78%; }
-    .visual-lines span:nth-child(2) { width: 52%; }
-    .visual-lines span:nth-child(3) { width: 64%; }
+    .visual-panel.theme-ai .visual-dots span { background: #c4b5fd; }
+    .visual-panel.theme-web .visual-dots span { background: #67e8f9; }
+    .visual-panel.theme-java .visual-dots span { background: #86efac; }
+    .visual-panel.theme-data .visual-dots span { background: #93c5fd; }
+    .visual-panel.theme-systems .visual-dots span { background: #fcd34d; }
 
     .layout {
       display: grid;
@@ -740,8 +793,9 @@
       ${project.repo ? `<a class="action" href="${project.repo}" target="_blank" rel="noopener">Open GitHub repo</a>` : ''}
     `;
 
+    const theme = projectTheme(project);
     const heroPreview = document.getElementById('heroPreview');
-    heroPreview.innerHTML = renderVisual(project.visualLabel || project.category, project.title);
+    heroPreview.innerHTML = renderVisual(project.visualLabel || project.category, project.title, theme);
 
     const gallery = document.getElementById('gallery');
     if (project.gallery.length) {
@@ -756,7 +810,7 @@
     } else {
       gallery.innerHTML = `
         <div class="empty">No exported UI screenshot was found for this project yet. I added a clean visual project panel and README-style details so the portfolio page still has a dedicated destination.</div>
-        <div class="shot">${renderVisual(project.visualLabel || project.category, project.title)}</div>
+        <div class="shot">${renderVisual(project.visualLabel || project.category, project.title, theme)}</div>
       `;
     }
 
@@ -768,14 +822,35 @@
       return `<section class="readme-block"><h3>${heading}</h3>${body}</section>`;
     }).join('');
 
-    function renderVisual(label, title) {
+    function renderVisual(label, title, theme = 'ai') {
       return `
-        <div class="visual-panel">
+        <div class="visual-panel theme-${theme}">
           <div class="visual-label">${label}</div>
+          <div class="visual-mark">${projectThemeMark(theme)}</div>
           <div class="visual-title">${title}</div>
-          <div class="visual-lines"><span></span><span></span><span></span></div>
+          <div class="visual-dots"><span></span><span></span><span></span><span></span></div>
         </div>
       `;
+    }
+
+    function projectTheme(project) {
+      const text = `${project.title} ${project.category} ${project.tech.join(' ')}`.toLowerCase();
+      if (text.includes('olympic') || text.includes('result evaluation') || text.includes('data analysis')) return 'data';
+      if (text.includes('ai') || text.includes('ml') || text.includes('cnn') || text.includes('tensorflow') || text.includes('prediction') || text.includes('fraud') || text.includes('diabetes') || text.includes('alzheimer')) return 'ai';
+      if (text.includes('java') || text.includes('swing') || text.includes('android')) return 'java';
+      if (text.includes('c++') || text.includes('systems') || text.includes('rsa') || text.includes('cryptography') || text.includes('console')) return 'systems';
+      if (text.includes('web') || text.includes('react') || text.includes('fastapi') || text.includes('node') || text.includes('html') || text.includes('bootstrap')) return 'web';
+      return 'ai';
+    }
+
+    function projectThemeMark(theme) {
+      return {
+        ai: 'AI',
+        web: 'WEB',
+        java: 'JAVA',
+        data: 'DATA',
+        systems: 'SYS'
+      }[theme] || 'LAB';
     }
   </script>
 </body>

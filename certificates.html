@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates | Prasad Pawar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #060a17;
+      --panel: #0d1525;
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(124,58,237,.35);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --quiet: #64748b;
+      --primary: #7c3aed;
+      --primary-light: #a78bfa;
+      --secondary: #06b6d4;
+      --accent: #10b981;
+      --gold: #f59e0b;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --radius: 18px;
+      --speed: .25s ease;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(245,158,11,.17), transparent 28rem),
+        radial-gradient(circle at 92% 10%, rgba(6,182,212,.18), transparent 30rem),
+        radial-gradient(circle at 50% 70%, rgba(124,58,237,.16), transparent 34rem),
+        linear-gradient(180deg, #060a17 0%, #08111f 48%, #050816 100%);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav-link,
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 15px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      transition: color var(--speed), border-color var(--speed), background var(--speed), transform var(--speed);
+    }
+
+    .nav-link:hover,
+    .card-link:hover {
+      color: var(--text);
+      border-color: var(--secondary);
+      background: rgba(6,182,212,.09);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 26px;
+      align-items: stretch;
+      margin-bottom: 34px;
+    }
+
+    .hero-card,
+    .score-card,
+    .cert-card {
+      border: 1px solid var(--line);
+      background: rgba(13,21,37,.82);
+      box-shadow: 0 20px 60px rgba(0,0,0,.24);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+    }
+
+    .hero-card {
+      padding: clamp(26px, 5vw, 54px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -38% 26%;
+      height: 180px;
+      background: linear-gradient(90deg, rgba(245,158,11,.2), rgba(6,182,212,.16));
+      filter: blur(35px);
+      transform: rotate(-8deg);
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 7vw, 5.3rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+      max-width: 760px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .score-card {
+      padding: 24px;
+      display: grid;
+      align-content: center;
+      gap: 16px;
+    }
+
+    .score-item {
+      display: grid;
+      gap: 4px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .score-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--primary-light);
+    }
+
+    .score-label {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      color: var(--quiet);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 16px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      transition: color var(--speed), border-color var(--speed), background var(--speed);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: #fff;
+      border-color: var(--primary);
+      background: rgba(124,58,237,.26);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .cert-card {
+      min-height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--speed), border-color var(--speed), box-shadow var(--speed);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 22px 65px rgba(0,0,0,.34);
+    }
+
+    .cert-card.hidden { display: none; }
+
+    .thumb-wrap {
+      min-height: 170px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(245,158,11,.18), transparent 28%),
+        linear-gradient(135deg, rgba(15,23,42,.96), rgba(17,24,39,.82));
+      display: grid;
+      place-items: center;
+      padding: 12px;
+    }
+
+    .thumb-wrap img {
+      width: 100%;
+      max-height: 190px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #020617;
+    }
+
+    .cert-body {
+      padding: 18px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .category,
+    .featured-pill {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .category { color: var(--secondary); }
+
+    .featured-pill {
+      border: 1px solid rgba(16,185,129,.32);
+      background: rgba(16,185,129,.1);
+      color: #6ee7b7;
+      border-radius: 999px;
+      padding: 4px 8px;
+      letter-spacing: .06em;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    .issuer {
+      color: var(--primary-light);
+      font-size: .84rem;
+      margin-top: -6px;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: .88rem;
+      flex: 1;
+    }
+
+    .card-link.primary {
+      width: fit-content;
+      color: #e0fbff;
+      border-color: rgba(6,182,212,.45);
+      background: rgba(6,182,212,.1);
+    }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">Prasad Pawar</div>
+      <nav class="nav-actions" aria-label="Certificate navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="index.html#education">Education</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">Certificates</p>
+        <h1>Proof of learning, grouped by signal strength.</h1>
+        <p class="hero-copy">
+          A focused certificate library across cloud fundamentals, computer science,
+          AI and data science, business analysis, and professional skills. The homepage
+          now highlights the highest-signal credentials; this page keeps the full set organized.
+        </p>
+      </div>
+      <aside class="score-card" aria-label="Certificate summary">
+        <div class="score-item">
+          <div class="score-number">15</div>
+          <div class="score-label">Certificates indexed</div>
+        </div>
+        <div class="score-item">
+          <div class="score-number">6</div>
+          <div class="score-label">Featured on homepage</div>
+        </div>
+        <div class="score-item">
+          <div class="score-number">5</div>
+          <div class="score-label">Learning tracks</div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="filters" aria-label="Certificate filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="featured">Featured</button>
+      <button class="filter-btn" data-filter="cloud">Cloud</button>
+      <button class="filter-btn" data-filter="core">Core CS</button>
+      <button class="filter-btn" data-filter="ai">AI / ML</button>
+      <button class="filter-btn" data-filter="business">Business</button>
+      <button class="filter-btn" data-filter="professional">Professional</button>
+    </div>
+
+    <section class="grid" id="certificateGrid" aria-label="All certificates"></section>
+  </main>
+
+  <script>
+    const certificates = [
+      {
+        title: "AWS Academy Cloud Foundations",
+        issuer: "AWS Academy",
+        category: "Cloud",
+        track: "cloud",
+        featured: true,
+        image: "portfolio-assets/certificates/aws-academy-cloud-foundations.png",
+        href: "portfolio-assets/certificates/aws-academy-cloud-foundations.pdf",
+        desc: "Official AWS Academy foundation credential covering core cloud concepts and AWS services."
+      },
+      {
+        title: "DSA Basic",
+        issuer: "Data Structures and Algorithms",
+        category: "Core CS",
+        track: "core",
+        featured: true,
+        image: "portfolio-assets/cert-dsa-basic.png",
+        href: "portfolio-assets/cert-dsa-basic.png",
+        desc: "Foundation credential for data structures, algorithmic thinking, and problem solving."
+      },
+      {
+        title: "C++ Programming",
+        issuer: "Programming Fundamentals",
+        category: "Core CS",
+        track: "core",
+        featured: true,
+        image: "portfolio-assets/cert-cpp.png",
+        href: "portfolio-assets/cert-cpp.png",
+        desc: "Programming fundamentals and C++ language practice for core software development."
+      },
+      {
+        title: "Fundamentals of Deep Learning",
+        issuer: "NVIDIA DLI",
+        category: "AI / ML",
+        track: "ai",
+        featured: true,
+        image: "portfolio-assets/Fundamentals_of_Deep_Learning.png",
+        href: "portfolio-assets/Fundamentals_of_Deep_Learning.png",
+        desc: "Deep-learning foundation credential from NVIDIA Deep Learning Institute."
+      },
+      {
+        title: "Visual Filters of CNN",
+        issuer: "TensorFlow",
+        category: "AI / ML",
+        track: "ai",
+        featured: true,
+        image: "portfolio-assets/Visual_Filters_CNN_using_Tensorflow.png",
+        href: "portfolio-assets/Visual_Filters_CNN_using_Tensorflow.png",
+        desc: "CNN filter and feature-map visualization work using TensorFlow."
+      },
+      {
+        title: "Introduction to Data Science",
+        issuer: "Great Learning",
+        category: "AI / ML",
+        track: "ai",
+        featured: true,
+        image: "portfolio-assets/certificates/introduction-to-data-science.png",
+        href: "portfolio-assets/certificates/introduction-to-data-science.pdf",
+        desc: "Data science fundamentals covering analytical workflow and data-driven problem solving."
+      },
+      {
+        title: "AWS Mastery Bootcamp",
+        issuer: "Cloud Computing",
+        category: "Cloud",
+        track: "cloud",
+        image: "portfolio-assets/cert-aws-mastery.jpg",
+        href: "portfolio-assets/cert-aws-mastery.jpg",
+        desc: "Cloud computing bootcamp certificate focused on AWS concepts and deployment foundations."
+      },
+      {
+        title: "Machine Learning for Beginners",
+        issuer: "Great Learning",
+        category: "AI / ML",
+        track: "ai",
+        image: "portfolio-assets/certificates/machine-learning-for-beginners.png",
+        href: "portfolio-assets/certificates/machine-learning-for-beginners.pdf",
+        desc: "Introductory machine-learning concepts and supervised learning foundations."
+      },
+      {
+        title: "Deep Learning for Beginners",
+        issuer: "Great Learning",
+        category: "AI / ML",
+        track: "ai",
+        image: "portfolio-assets/certificates/deep-learning-for-beginners.png",
+        href: "portfolio-assets/certificates/deep-learning-for-beginners.pdf",
+        desc: "Beginner-level deep-learning concepts and neural-network workflow."
+      },
+      {
+        title: "Introduction to Neural Network",
+        issuer: "Simplilearn",
+        category: "AI / ML",
+        track: "ai",
+        image: "portfolio-assets/certificates/introduction-to-neural-network.png",
+        href: "portfolio-assets/certificates/introduction-to-neural-network.pdf",
+        desc: "Neural-network fundamentals and introductory model concepts."
+      },
+      {
+        title: "Business Analysis Basics",
+        issuer: "Simplilearn",
+        category: "Business",
+        track: "business",
+        image: "portfolio-assets/certificates/business-analysis-basics.png",
+        href: "portfolio-assets/certificates/business-analysis-basics.pdf",
+        desc: "Business-analysis basics useful for understanding stakeholder needs and project context."
+      },
+      {
+        title: "Aptitude, Soft Skills & Technical Employability",
+        issuer: "Employability Enhancement Program",
+        category: "Professional",
+        track: "professional",
+        image: "portfolio-assets/certificates/soft-skills-technical-employability.png",
+        href: "portfolio-assets/certificates/soft-skills-technical-employability.pdf",
+        desc: "Employability training across aptitude, soft skills, and technical readiness."
+      },
+      {
+        title: "Digital Productivity",
+        issuer: "NIT Foundation / UNICEF",
+        category: "Professional",
+        track: "professional",
+        image: "portfolio-assets/certificates/digital-productivity.png",
+        href: "portfolio-assets/certificates/digital-productivity.pdf",
+        desc: "Digital productivity course focused on practical workplace technology skills."
+      },
+      {
+        title: "Workplace Emotional Intelligence",
+        issuer: "upGrad",
+        category: "Professional",
+        track: "professional",
+        image: "portfolio-assets/certificates/workplace-emotional-intelligence.jpg",
+        href: "portfolio-assets/certificates/workplace-emotional-intelligence.jpg",
+        desc: "Professional skills credential focused on emotional intelligence at work."
+      },
+      {
+        title: "Social Entrepreneurship",
+        issuer: "HP LIFE",
+        category: "Business",
+        track: "business",
+        image: "portfolio-assets/certificates/social-entrepreneurship.png",
+        href: "portfolio-assets/certificates/social-entrepreneurship.pdf",
+        desc: "Business-impact certificate covering sustainable social enterprise thinking."
+      }
+    ];
+
+    const grid = document.getElementById("certificateGrid");
+
+    function renderCertificates(filter = "all") {
+      grid.innerHTML = certificates.map(cert => {
+        const hidden = filter === "all"
+          ? ""
+          : filter === "featured"
+            ? cert.featured ? "" : " hidden"
+            : cert.track === filter ? "" : " hidden";
+        return `
+          <article class="cert-card${hidden}" data-track="${cert.track}">
+            <div class="thumb-wrap">
+              <img src="${cert.image}" alt="${cert.title} certificate">
+            </div>
+            <div class="cert-body">
+              <div class="card-top">
+                <span class="category">${cert.category}</span>
+                ${cert.featured ? `<span class="featured-pill">Featured</span>` : ""}
+              </div>
+              <h2>${cert.title}</h2>
+              <div class="issuer">${cert.issuer}</div>
+              <p class="desc">${cert.desc}</p>
+              <a class="card-link primary" href="${cert.href}" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    renderCertificates();
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        renderCertificates(button.dataset.filter);
+      });
+    });
+  </script>
+</body>
+</html>
