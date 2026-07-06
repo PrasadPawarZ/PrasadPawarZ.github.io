@@ -11,41 +11,123 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #060a17;
-      --panel: #0d1525;
-      --line: rgba(255,255,255,.08);
-      --line-strong: rgba(124,58,237,.35);
+      --bg: #060A17;
+      --bg-card: #0D1525;
+      --bg-card-hover: #121e35;
+      --border: rgba(124,58,237,0.25);
+      --border-subtle: rgba(255,255,255,0.06);
+      --panel: var(--bg-card);
+      --line: var(--border-subtle);
+      --line-strong: var(--border);
       --text: #e2e8f0;
-      --muted: #94a3b8;
+      --muted: #64748b;
+      --muted-light: #94a3b8;
       --quiet: #64748b;
       --primary: #7c3aed;
       --primary-light: #a78bfa;
+      --primary-glow: rgba(124,58,237,0.35);
       --secondary: #06b6d4;
+      --secondary-glow: rgba(6,182,212,0.3);
       --accent: #10b981;
+      --accent-glow: rgba(16,185,129,0.3);
       --gold: #f59e0b;
       --font-display: "Space Grotesk", system-ui, sans-serif;
       --font-body: "Inter", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", monospace;
-      --radius: 18px;
-      --speed: .25s ease;
+      --font-d: var(--font-display);
+      --font-b: var(--font-body);
+      --font-m: var(--font-mono);
+      --r: 12px;
+      --r-sm: 6px;
+      --tr: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --radius: var(--r);
+      --speed: var(--tr);
     }
 
     body {
       min-height: 100vh;
       font-family: var(--font-body);
       color: var(--text);
-      background:
-        radial-gradient(circle at 12% 6%, rgba(245,158,11,.17), transparent 28rem),
-        radial-gradient(circle at 92% 10%, rgba(6,182,212,.18), transparent 30rem),
-        radial-gradient(circle at 50% 70%, rgba(124,58,237,.16), transparent 34rem),
-        linear-gradient(180deg, #060a17 0%, #08111f 48%, #050816 100%);
+      background: var(--bg);
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 6%, rgba(245,158,11,.16), transparent 28rem),
+        radial-gradient(circle at 88% 8%, rgba(6,182,212,.16), transparent 30rem),
+        radial-gradient(circle at 48% 72%, rgba(124,58,237,.14), transparent 34rem),
+        linear-gradient(180deg, rgba(8,17,31,.34), transparent 52%);
     }
 
     .page {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 28px 0 70px;
+      padding: 112px 0 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(6,10,23,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--primary-light); }
+
+    .site-links {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      min-width: 0;
+    }
+
+    .site-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted-light);
+      text-decoration: none;
+      padding: .4rem .875rem;
+      border-radius: var(--r-sm);
+      transition: color var(--tr), background var(--tr), transform var(--tr);
+    }
+
+    .site-links a:hover,
+    .site-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .site-links .site-cta {
+      background: var(--primary);
+      color: #fff;
+      padding: .45rem 1.1rem;
+      font-weight: 600;
     }
 
     .topbar {
@@ -104,7 +186,7 @@
     .score-card,
     .cert-card {
       border: 1px solid var(--line);
-      background: rgba(13,21,37,.82);
+      background: rgba(13,21,37,.86);
       box-shadow: 0 20px 60px rgba(0,0,0,.24);
       backdrop-filter: blur(18px);
       border-radius: var(--radius);
@@ -311,23 +393,32 @@
 
     @media (max-width: 820px) {
       .hero { grid-template-columns: 1fr; }
-      .topbar { align-items: flex-start; flex-direction: column; }
-      .nav-actions { justify-content: flex-start; }
+      .site-nav { padding: 0 1.25rem; }
+      .site-links {
+        gap: .1rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .site-links a {
+        white-space: nowrap;
+        padding: .35rem .65rem;
+        font-size: .78rem;
+      }
     }
   </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="nav-logo" href="index.html">Prasad<span>.</span></a>
+    <div class="site-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a class="active" href="certificates.html">Certificates</a>
+      <a href="index.html#education">Education</a>
+      <a href="index.html#contact" class="site-cta">Contact</a>
+    </div>
+  </nav>
   <main class="page">
-    <header class="topbar">
-      <div class="brand">Prasad Pawar</div>
-      <nav class="nav-actions" aria-label="Certificate navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="index.html#education">Education</a>
-        <a class="nav-link" href="projects.html">Projects</a>
-        <a class="nav-link" href="index.html#contact">Contact</a>
-      </nav>
-    </header>
-
     <section class="hero">
       <div class="hero-card">
         <p class="eyebrow">Certificates</p>
