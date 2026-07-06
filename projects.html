@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | Prasad Pawar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #060a17;
+      --panel: #0d1525;
+      --panel-2: #111c31;
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(124,58,237,.35);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --quiet: #64748b;
+      --primary: #7c3aed;
+      --primary-light: #a78bfa;
+      --secondary: #06b6d4;
+      --accent: #10b981;
+      --orange: #f59e0b;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --radius: 18px;
+      --speed: .25s ease;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,.25), transparent 34rem),
+        radial-gradient(circle at 90% 10%, rgba(6,182,212,.18), transparent 30rem),
+        linear-gradient(180deg, #060a17 0%, #08111f 48%, #050816 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav-link,
+    .detail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 15px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      transition: color var(--speed), border-color var(--speed), background var(--speed), transform var(--speed);
+    }
+
+    .nav-link:hover,
+    .detail-link:hover {
+      color: var(--text);
+      border-color: var(--secondary);
+      background: rgba(6,182,212,.09);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 26px;
+      align-items: stretch;
+      margin-bottom: 34px;
+    }
+
+    .hero-card,
+    .score-card,
+    .project-card {
+      border: 1px solid var(--line);
+      background: rgba(13,21,37,.82);
+      box-shadow: 0 20px 60px rgba(0,0,0,.24);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+    }
+
+    .hero-card {
+      padding: clamp(26px, 5vw, 54px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -38% 26%;
+      height: 180px;
+      background: linear-gradient(90deg, rgba(6,182,212,.18), rgba(16,185,129,.16));
+      filter: blur(35px);
+      transform: rotate(-8deg);
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+      max-width: 760px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .score-card {
+      padding: 24px;
+      display: grid;
+      align-content: center;
+      gap: 16px;
+    }
+
+    .score-item {
+      display: grid;
+      gap: 4px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .score-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--primary-light);
+    }
+
+    .score-label {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      color: var(--quiet);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 16px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      transition: color var(--speed), border-color var(--speed), background var(--speed);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: #fff;
+      border-color: var(--primary);
+      background: rgba(124,58,237,.26);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      min-height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform var(--speed), border-color var(--speed), box-shadow var(--speed);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 22px 65px rgba(0,0,0,.34);
+    }
+
+    .project-card.hidden { display: none; }
+
+    .preview {
+      min-height: 150px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 15px;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(6,182,212,.28), transparent 32%),
+        radial-gradient(circle at 90% 16%, rgba(124,58,237,.28), transparent 30%),
+        linear-gradient(135deg, rgba(15,23,42,.95), rgba(17,24,39,.78));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -38% 20%;
+      height: 88px;
+      background: linear-gradient(90deg, rgba(6,182,212,.18), rgba(16,185,129,.14));
+      filter: blur(24px);
+      transform: rotate(-8deg);
+    }
+
+    .preview-label,
+    .category {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .preview-label {
+      color: var(--secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-title {
+      max-width: 16rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      line-height: 1.25;
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-lines {
+      display: grid;
+      gap: 7px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-lines span {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .preview-lines span:nth-child(1) { width: 82%; }
+    .preview-lines span:nth-child(2) { width: 58%; }
+    .preview-lines span:nth-child(3) { width: 70%; }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .category {
+      color: var(--primary-light);
+    }
+
+    .featured-pill {
+      border: 1px solid rgba(16,185,129,.32);
+      background: rgba(16,185,129,.1);
+      color: #6ee7b7;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-family: var(--font-mono);
+      font-size: .63rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: .88rem;
+      flex: 1;
+    }
+
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      color: var(--muted);
+      border-radius: 7px;
+      padding: 4px 8px;
+      font-family: var(--font-mono);
+      font-size: .66rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 2px;
+    }
+
+    .detail-link.primary {
+      color: #e0fbff;
+      border-color: rgba(6,182,212,.45);
+      background: rgba(6,182,212,.1);
+    }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">Prasad Pawar</div>
+      <nav class="nav-actions" aria-label="Project navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="index.html#projects">Featured</a>
+        <a class="nav-link" href="index.html#contact">Contact</a>
+        <a class="nav-link" href="https://github.com/PrasadPawarZ" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">All Projects</p>
+        <h1>Project library, cleaned and recruiter-ready.</h1>
+        <p class="hero-copy">
+          A complete index of my portfolio projects across full-stack development, machine learning,
+          Java desktop applications, data analysis, and systems concepts. The homepage keeps only the
+          strongest featured work; this page keeps the wider archive easy to browse.
+        </p>
+      </div>
+      <aside class="score-card" aria-label="Project summary">
+        <div class="score-item">
+          <div class="score-number">17</div>
+          <div class="score-label">Projects indexed</div>
+        </div>
+        <div class="score-item">
+          <div class="score-number">5</div>
+          <div class="score-label">Featured on homepage</div>
+        </div>
+        <div class="score-item">
+          <div class="score-number">4</div>
+          <div class="score-label">Core skill tracks</div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="filters" aria-label="Project filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI / ML</button>
+      <button class="filter-btn" data-filter="web">Web / Full-stack</button>
+      <button class="filter-btn" data-filter="java">Java / Desktop</button>
+      <button class="filter-btn" data-filter="systems">Systems</button>
+    </div>
+
+    <section class="grid" id="projectGrid" aria-label="All projects"></section>
+  </main>
+
+  <script>
+    const projects = [
+      {
+        id: "trash-view-on-maps",
+        title: "Trash View on Maps",
+        category: "Web Game",
+        track: "web",
+        featured: true,
+        visual: "Maps API Game",
+        repo: "",
+        desc: "A browser game where players inspect Indian city map locations and identify whether visible trash is present.",
+        tech: ["Node.js", "Express", "JavaScript", "Google Maps API"]
+      },
+      {
+        id: "alzheimers-disease-prediction",
+        title: "Alzheimer's Disease Prediction System",
+        category: "AI / Full-stack",
+        track: "ai",
+        featured: true,
+        visual: "Healthcare AI",
+        repo: "",
+        desc: "Full-stack MRI prediction workflow with FastAPI, React, CNN classification, database-backed patients, and prediction history.",
+        tech: ["Python", "FastAPI", "React", "TensorFlow", "PostgreSQL", "Docker"]
+      },
+      {
+        id: "diabetes-prediction",
+        title: "Diabetes Prediction",
+        category: "AI / ML Notebook",
+        track: "ai",
+        visual: "Classification",
+        repo: "https://github.com/PrasadPawarZ/Diabetes-Prediction-Project",
+        desc: "Healthcare classification notebook with preprocessing, feature engineering, algorithm comparison, and evaluation metrics.",
+        tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "Jupyter"]
+      },
+      {
+        id: "survival-chances-accident",
+        title: "Survival Chances in Accident",
+        category: "AI / ML Notebook",
+        track: "ai",
+        visual: "Prediction Notebook",
+        repo: "https://github.com/PrasadPawarZ/Survival-Chances-in-an-Accident",
+        desc: "Predictive notebook estimating accident survival probability from train/test CSV data and classification models.",
+        tech: ["Python", "Pandas", "Scikit-learn", "Matplotlib"]
+      },
+      {
+        id: "second-hand-car-price-prediction",
+        title: "Second Hand Car Price Prediction",
+        category: "AI / ML Notebook",
+        track: "ai",
+        visual: "Regression",
+        repo: "https://github.com/PrasadPawarZ/Second-Hand-Car-Price-Prediction",
+        desc: "Regression workflow for estimating used-car prices from mileage, age, brand, fuel type, and related vehicle features.",
+        tech: ["Python", "Pandas", "NumPy", "Scikit-learn"]
+      },
+      {
+        id: "credit-card-fraud-detection",
+        title: "Credit Card Fraud Detection",
+        category: "AI / ML Notebook",
+        track: "ai",
+        featured: true,
+        visual: "Fraud Detection",
+        repo: "https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection",
+        desc: "Imbalanced classification project using SMOTE, feature scaling, model comparison, confusion matrices, ROC/PR curves, and F1 analysis.",
+        tech: ["Python", "Scikit-learn", "SMOTE", "Pandas", "Jupyter"]
+      },
+      {
+        id: "olympic-data-eda",
+        title: "Olympic Data EDA",
+        category: "Data Analysis",
+        track: "ai",
+        visual: "EDA Notebook",
+        repo: "https://github.com/PrasadPawarZ/Olympic-Data-EDA",
+        desc: "Exploratory notebook studying Olympic participation, medals, athlete trends, and country-level performance patterns.",
+        tech: ["Python", "Pandas", "Matplotlib", "Seaborn"]
+      },
+      {
+        id: "visualizing-cnn-filters",
+        title: "Visualizing Filters of a CNN",
+        category: "Deep Learning",
+        track: "ai",
+        visual: "CNN Visuals",
+        repo: "",
+        desc: "CNN interpretability project focused on filters, activation maps, and visual explanations of learned features.",
+        tech: ["Python", "TensorFlow", "Matplotlib", "NumPy"]
+      },
+      {
+        id: "daily-diary",
+        title: "Daily Diary",
+        category: "Web App",
+        track: "web",
+        visual: "Frontend App",
+        repo: "https://github.com/PrasadPawarZ/Daily-Dairy",
+        desc: "Responsive diary app for creating, editing, and browsing journal entries with a simple browser-first workflow.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"]
+      },
+      {
+        id: "student-result-evaluation",
+        title: "Student Result Evaluation & Analysis System",
+        category: "Analytics",
+        track: "web",
+        featured: true,
+        visual: "Analytics Pipeline",
+        repo: "",
+        desc: "Automated result-processing system that generates course outcome, faculty, and departmental performance reports.",
+        tech: ["Python", "Excel", "Pandas", "Data Analysis"]
+      },
+      {
+        id: "car-rental-system",
+        title: "Car Rental System",
+        category: "Java Desktop",
+        track: "java",
+        featured: true,
+        visual: "Java Swing App",
+        repo: "https://github.com/PrasadPawarZ/ajp-car",
+        desc: "Desktop rental-management app covering vehicles, availability, booking, return, search, billing, and Access database storage.",
+        tech: ["Java", "Swing", "Maven", "Microsoft Access", "OOP"]
+      },
+      {
+        id: "train-reservation-system",
+        title: "Train Reservation System",
+        category: "Java Desktop",
+        track: "java",
+        visual: "Reservation UI",
+        repo: "https://github.com/PrasadPawarZ/Train_Reservation_System",
+        desc: "Swing-based booking app for reservations, cancellations, PNR status checks, and train schedule browsing.",
+        tech: ["Java", "Swing", "OOP"]
+      },
+      {
+        id: "atm-interface",
+        title: "ATM Interface",
+        category: "Java Desktop",
+        track: "java",
+        visual: "ATM Flow",
+        repo: "https://github.com/PrasadPawarZ/ATM_Interface",
+        desc: "ATM simulation with PIN authentication, deposits, withdrawals, balance enquiry, and mini-statement workflows.",
+        tech: ["Java", "Swing", "OOP"]
+      },
+      {
+        id: "bank-management-system",
+        title: "Bank Management System",
+        category: "Android / Java",
+        track: "java",
+        visual: "Banking App",
+        repo: "",
+        desc: "Banking operations concept covering account creation, fund transfer, transaction history, and balance management.",
+        tech: ["Android", "Java", "OOP"]
+      },
+      {
+        id: "guess-the-number-game",
+        title: "Guess the Number Game",
+        category: "Java Game",
+        track: "java",
+        visual: "Game UI",
+        repo: "https://github.com/PrasadPawarZ/Guess_No_Game",
+        desc: "Number guessing game with difficulty settings, score tracking, hints, and simple desktop interaction flow.",
+        tech: ["Java", "Swing"]
+      },
+      {
+        id: "rsa-key-pair-generation",
+        title: "Cryptographic Key Pair Generation (RSA)",
+        category: "Systems",
+        track: "systems",
+        visual: "Security Algorithm",
+        repo: "",
+        desc: "Python implementation of RSA key-pair generation concepts using prime selection, modular arithmetic, and encryption basics.",
+        tech: ["Python", "Cryptography", "Algorithms"]
+      },
+      {
+        id: "hotel-management-system",
+        title: "Hotel Management System",
+        category: "C++ Systems",
+        track: "systems",
+        visual: "Console App",
+        repo: "https://github.com/PrasadPawarZ/Hotel_Room_Booking",
+        desc: "C++ hotel-management application for room booking, check-in, checkout, customer records, and billing.",
+        tech: ["C++", "OOP", "Data Structures"]
+      }
+    ];
+
+    const grid = document.getElementById("projectGrid");
+
+    function renderProjects(filter = "all") {
+      grid.innerHTML = projects.map(project => {
+        const hidden = filter !== "all" && project.track !== filter ? " hidden" : "";
+        const repo = project.repo
+          ? `<a class="detail-link" href="${project.repo}" target="_blank" rel="noopener">GitHub repo</a>`
+          : "";
+        const tags = project.tech.map(item => `<span class="tag">${item}</span>`).join("");
+        return `
+          <article class="project-card${hidden}" data-track="${project.track}">
+            <div class="preview">
+              <div class="preview-label">${project.visual}</div>
+              <div class="preview-title">${project.title}</div>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+            </div>
+            <div class="card-top">
+              <span class="category">${project.category}</span>
+              ${project.featured ? `<span class="featured-pill">Featured</span>` : ""}
+            </div>
+            <h2>${project.title}</h2>
+            <p class="desc">${project.desc}</p>
+            <div class="tech">${tags}</div>
+            <div class="actions">
+              <a class="detail-link primary" href="project-details.html?project=${project.id}">Gallery and details</a>
+              ${repo}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    renderProjects();
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        renderProjects(button.dataset.filter);
+      });
+    });
+  </script>
+</body>
+</html>

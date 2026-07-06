@@ -1,0 +1,11 @@
+# Local document render/QA outputs
+cv_render/
+resume_render_microsoft/
+.codex_docx_tmp/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log

@@ -344,6 +344,22 @@
       box-shadow: 0 16px 40px rgba(0,0,0,.35);
     }
     .proj-card.hidden { display: none; }
+    #projects .proj-card:not(.featured-project) { display: none; }
+
+    .projects-lead {
+      max-width: 680px;
+      color: var(--muted-light);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin: -1.25rem 0 1.5rem;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.875rem;
+      margin-bottom: 2.5rem;
+    }
 
     .proj-shot {
       width: 100%;
@@ -425,7 +441,6 @@
     .proj-visual-bars span:nth-child(1) { width: 82%; }
     .proj-visual-bars span:nth-child(2) { width: 58%; }
     .proj-visual-bars span:nth-child(3) { width: 72%; }
-    }
 
     .proj-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
@@ -616,6 +631,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="projects.html">All Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
@@ -799,20 +815,22 @@
 <!-- ═══════════════ PROJECTS ═══════════════ -->
 <div class="section-wrap" id="projects" style="padding-top: 0;">
   <p class="section-eyebrow fi">04 — Projects</p>
-  <h2 class="section-title fi">Things I've Built</h2>
+  <h2 class="section-title fi">Featured Projects</h2>
   <div class="section-bar fi"></div>
 
-  <div class="filter-bar fi">
-    <button class="fbtn active" data-filter="all">All (17)</button>
-    <button class="fbtn" data-filter="ai">AI / ML</button>
-    <button class="fbtn" data-filter="web">Web</button>
-    <button class="fbtn" data-filter="java">Java / Desktop</button>
-    <button class="fbtn" data-filter="sys">Systems</button>
+  <p class="projects-lead fi">
+    A smaller set of stronger projects for recruiters: full-stack AI, software engineering,
+    Java/OOP, analytics automation, and evaluated machine-learning notebooks.
+  </p>
+
+  <div class="project-actions fi">
+    <a href="projects.html" class="btn-p">View all projects</a>
+    <a href="project-details.html?project=alzheimers-disease-prediction" class="btn-s">Open featured gallery</a>
   </div>
 
   <div class="projects-grid">
 
-    <div class="proj-card" data-cat="web">
+    <div class="proj-card featured-project" data-cat="web">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(6,182,212,.12)">TV</div>
         <span class="proj-cat cat-web">Web Game</span>
@@ -826,7 +844,7 @@
     </div>
 
     <!-- AI/ML -->
-    <div class="proj-card" data-cat="ai">
+    <div class="proj-card featured-project" data-cat="ai">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(124,58,237,.15)">🧠</div>
         <span class="proj-cat cat-ai">AI / ML</span>
@@ -879,7 +897,7 @@
       </div>
     </div>
 
-    <div class="proj-card" data-cat="ai">
+    <div class="proj-card featured-project" data-cat="ai">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(59,130,246,.12)">💳</div>
         <span class="proj-cat cat-ai">AI / ML</span>
@@ -932,7 +950,7 @@
       </div>
     </div>
 
-    <div class="proj-card" data-cat="web">
+    <div class="proj-card featured-project" data-cat="web">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(16,185,129,.12)">📊</div>
         <span class="proj-cat cat-web">Web</span>
@@ -946,7 +964,7 @@
     </div>
 
     <!-- Java -->
-    <div class="proj-card" data-cat="java">
+    <div class="proj-card featured-project" data-cat="java">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(16,185,129,.12)">🚘</div>
         <span class="proj-cat cat-java">Java</span>
@@ -1100,6 +1118,86 @@
         <div class="cert-name">Visual Filters of CNN</div>
         <div class="cert-issuer">TensorFlow</div>
         <a class="cert-link" href="portfolio-assets/Visual_Filters_CNN_using_Tensorflow.png" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations certificate">
+      <div class="cert-body">
+        <div class="cert-name">AWS Academy Cloud Foundations</div>
+        <div class="cert-issuer">AWS Academy</div>
+        <a class="cert-link" href="portfolio-assets/certificates/aws-academy-cloud-foundations.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/business-analysis-basics.png" alt="Business Analysis Basics certificate">
+      <div class="cert-body">
+        <div class="cert-name">Business Analysis Basics</div>
+        <div class="cert-issuer">Simplilearn</div>
+        <a class="cert-link" href="portfolio-assets/certificates/business-analysis-basics.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/introduction-to-data-science.png" alt="Introduction to Data Science certificate">
+      <div class="cert-body">
+        <div class="cert-name">Introduction to Data Science</div>
+        <div class="cert-issuer">Great Learning</div>
+        <a class="cert-link" href="portfolio-assets/certificates/introduction-to-data-science.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/machine-learning-for-beginners.png" alt="Machine Learning for Beginners certificate">
+      <div class="cert-body">
+        <div class="cert-name">Machine Learning for Beginners</div>
+        <div class="cert-issuer">Great Learning</div>
+        <a class="cert-link" href="portfolio-assets/certificates/machine-learning-for-beginners.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/deep-learning-for-beginners.png" alt="Deep Learning for Beginners certificate">
+      <div class="cert-body">
+        <div class="cert-name">Deep Learning for Beginners</div>
+        <div class="cert-issuer">Great Learning</div>
+        <a class="cert-link" href="portfolio-assets/certificates/deep-learning-for-beginners.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/introduction-to-neural-network.png" alt="Introduction to Neural Network certificate">
+      <div class="cert-body">
+        <div class="cert-name">Introduction to Neural Network</div>
+        <div class="cert-issuer">Simplilearn</div>
+        <a class="cert-link" href="portfolio-assets/certificates/introduction-to-neural-network.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/soft-skills-technical-employability.png" alt="Aptitude soft skills and technical employability certificate">
+      <div class="cert-body">
+        <div class="cert-name">Aptitude, Soft Skills & Technical Employability</div>
+        <div class="cert-issuer">Employability Enhancement Program</div>
+        <a class="cert-link" href="portfolio-assets/certificates/soft-skills-technical-employability.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/digital-productivity.png" alt="Digital Productivity certificate">
+      <div class="cert-body">
+        <div class="cert-name">Digital Productivity</div>
+        <div class="cert-issuer">NIT Foundation / UNICEF</div>
+        <a class="cert-link" href="portfolio-assets/certificates/digital-productivity.pdf" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/workplace-emotional-intelligence.jpg" alt="Workplace Emotional Intelligence certificate">
+      <div class="cert-body">
+        <div class="cert-name">Workplace Emotional Intelligence</div>
+        <div class="cert-issuer">upGrad</div>
+        <a class="cert-link" href="portfolio-assets/certificates/workplace-emotional-intelligence.jpg" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+    <div class="cert-card featured fi">
+      <img class="cert-thumb" src="portfolio-assets/certificates/social-entrepreneurship.png" alt="Social Entrepreneurship certificate">
+      <div class="cert-body">
+        <div class="cert-name">Social Entrepreneurship</div>
+        <div class="cert-issuer">HP LIFE</div>
+        <a class="cert-link" href="portfolio-assets/certificates/social-entrepreneurship.pdf" target="_blank" rel="noopener">View certificate</a>
       </div>
     </div>
   </div>
