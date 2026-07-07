@@ -391,6 +391,82 @@
       background: rgba(6,182,212,.1);
     }
 
+    .contact-footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 42px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(13,21,37,.86);
+      box-shadow: 0 20px 60px rgba(0,0,0,.24);
+      backdrop-filter: blur(18px);
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .footer-eyebrow {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin-bottom: 12px;
+    }
+
+    .footer-copy {
+      max-width: 620px;
+      margin: 0 auto 20px;
+      color: var(--muted-light);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 15px;
+      color: var(--muted-light);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      transition: color var(--speed), border-color var(--speed), background var(--speed), transform var(--speed);
+    }
+
+    .footer-link:hover {
+      color: var(--text);
+      border-color: var(--secondary);
+      background: rgba(6,182,212,.09);
+      transform: translateY(-1px);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: var(--quiet);
+      font-family: var(--font-mono);
+      font-size: .68rem;
+    }
+
     @media (max-width: 820px) {
       .hero { grid-template-columns: 1fr; }
       .site-nav { padding: 0 1.25rem; }
@@ -406,46 +482,38 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="portfolio-assets/site.css">
 </head>
 <body>
   <nav class="site-nav" aria-label="Portfolio navigation">
     <a class="nav-logo" href="index.html">Prasad<span>.</span></a>
     <div class="site-links">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a class="active" href="certificates.html">Certificates</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
       <a href="index.html#education">Education</a>
-      <a href="index.html#contact" class="site-cta">Contact</a>
+      <a href="index.html#certifications">Certificates</a>
+      <a href="#contact" class="site-cta">Contact</a>
     </div>
   </nav>
-  <main class="page">
-    <section class="hero">
-      <div class="hero-card">
-        <p class="eyebrow">Certificates</p>
-        <h1>Proof of learning, grouped by signal strength.</h1>
-        <p class="hero-copy">
-          A focused certificate library across cloud fundamentals, computer science,
-          AI and data science, business analysis, and professional skills. The homepage
-          now highlights the highest-signal credentials; this page keeps the full set organized.
-        </p>
-      </div>
-      <aside class="score-card" aria-label="Certificate summary">
-        <div class="score-item">
-          <div class="score-number">15</div>
-          <div class="score-label">Certificates indexed</div>
-        </div>
-        <div class="score-item">
-          <div class="score-number">6</div>
-          <div class="score-label">Featured on homepage</div>
-        </div>
-        <div class="score-item">
-          <div class="score-number">5</div>
-          <div class="score-label">Learning tracks</div>
-        </div>
-      </aside>
-    </section>
 
-    <div class="filters" aria-label="Certificate filters">
+  <section class="profile-hero" aria-label="Certificate library introduction" data-phrases="15 Certificates indexed|6 Featured on homepage|5 Learning tracks">
+    <canvas class="profile-neural-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span>Certificates</div>
+      <h1 class="hero-name">Certificate library</h1>
+      <p class="hero-role"><span class="page-typewriter"></span><span class="cursor"></span></p>
+      <p class="hero-desc">
+        A focused certificate library across cloud fundamentals, computer science, AI and data science,
+        business analysis, and professional skills. The homepage highlights the highest-signal credentials;
+        this page keeps the full set organized.
+      </p>
+    </div>
+  </section>
+
+  <main class="page page-after-profile">
+    <div class="filters fi" aria-label="Certificate filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="featured">Featured</button>
       <button class="filter-btn" data-filter="cloud">Cloud</button>
@@ -458,6 +526,41 @@
     <section class="grid" id="certificateGrid" aria-label="All certificates"></section>
   </main>
 
+  <div class="section-wrap" id="contact" style="padding-top: 0; text-align: center;">
+    <p class="section-eyebrow fi" style="justify-content: center; display: flex;">Contact</p>
+    <h2 class="section-title fi">Let's Connect</h2>
+    <div class="section-bar fi" style="margin: 0.875rem auto 2rem;"></div>
+
+    <p class="contact-desc fi">
+      I'm actively looking for opportunities in AI, ML, and software engineering.
+      Whether it's a job, collaboration, or project discussion, my inbox is open.
+    </p>
+
+    <div class="contact-links fi">
+      <a href="mailto:psprasad567@gmail.com" class="clink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        psprasad567@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/prasad-pawar-067bb7250" target="_blank" rel="noopener" class="clink">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/PrasadPawarZ" target="_blank" rel="noopener" class="clink">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg>
+        GitHub
+      </a>
+      <a href="tel:+917620642706" class="clink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 12 13.86l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 19.73 15l.19 1.92z"/></svg>
+        +91 7620642706
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Prasad Pawar &nbsp;&middot;&nbsp; Pune, Maharashtra &nbsp;&middot;&nbsp; Built with HTML, CSS & JavaScript
+  </footer>
+
+  <script src="portfolio-assets/page-effects.js"></script>
   <script>
     const certificates = [
       {
@@ -613,19 +716,17 @@
             ? cert.featured ? "" : " hidden"
             : cert.track === filter ? "" : " hidden";
         return `
-          <article class="cert-card${hidden}" data-track="${cert.track}">
-            <div class="thumb-wrap">
-              <img src="${cert.image}" alt="${cert.title} certificate">
-            </div>
+          <article class="cert-card featured fi${hidden}" data-track="${cert.track}">
+            <img class="cert-thumb" src="${cert.image}" alt="${cert.title} certificate">
             <div class="cert-body">
-              <div class="card-top">
-                <span class="category">${cert.category}</span>
-                ${cert.featured ? `<span class="featured-pill">Featured</span>` : ""}
+              <div class="cert-name">${cert.title}</div>
+              <div class="cert-issuer">${cert.issuer}</div>
+              <p class="cert-desc">${cert.desc}</p>
+              <div class="cert-meta">
+                <span>${cert.category}</span>
+                ${cert.featured ? `<span>Featured</span>` : ""}
               </div>
-              <h2>${cert.title}</h2>
-              <div class="issuer">${cert.issuer}</div>
-              <p class="desc">${cert.desc}</p>
-              <a class="card-link primary" href="${cert.href}" target="_blank" rel="noopener">View certificate</a>
+              <a class="cert-link" href="${cert.href}" target="_blank" rel="noopener">View certificate</a>
             </div>
           </article>
         `;

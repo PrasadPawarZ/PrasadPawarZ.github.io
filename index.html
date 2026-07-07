@@ -37,6 +37,11 @@
 
     html { scroll-behavior: smooth; }
 
+    .section-wrap,
+    #certifications {
+      scroll-margin-top: 88px;
+    }
+
     body {
       font-family: var(--font-b);
       background: var(--bg);
@@ -96,9 +101,19 @@
       position: relative; min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden; padding: 6rem 2rem 5rem;
+      isolation: isolate;
     }
 
-    #neural-canvas { position: absolute; inset: 0; opacity: 0.35; }
+    #neural-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0.55;
+      pointer-events: none;
+    }
 
     /* Radial glow behind text */
     #hero::before {
@@ -107,9 +122,10 @@
       width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 1;
     }
 
-    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 820px; }
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 820px; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -174,7 +190,7 @@
     .btn-s:hover { border-color: var(--primary); background: rgba(124,58,237,0.1); transform: translateY(-2px); }
 
     .scroll-hint {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      position: absolute; z-index: 2; bottom: 2rem; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 0.375rem;
       color: var(--muted); font-family: var(--font-m); font-size: 0.65rem; letter-spacing: 0.12em;
       animation: bob 2.5s ease-in-out infinite;
@@ -694,6 +710,7 @@
       .section-wrap { padding: 4rem 1.25rem; }
     }
   </style>
+  <link rel="stylesheet" href="portfolio-assets/site.css">
 </head>
 <body>
 
@@ -705,9 +722,8 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="projects.html">All Projects</a></li>
-    <li><a href="certificates.html">Certificates</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certificates</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -763,8 +779,8 @@
       </p>
       <p>
         I've built 15+ projects across machine learning, Java desktop apps, web development, and systems programming.
-        Through internships at <span class="about-highlight">Extech Digital</span> and <span class="about-highlight">Oasis Infobyte</span>,
-        I've worked in Agile environments on real-world analytics and software challenges.
+        Through internships at <span class="about-highlight">Extech Digital</span>, <span class="about-highlight">Regex Technologies</span>,
+        and <span class="about-highlight">NPIT Solutions</span>, I've worked across AI/ML workflows and practical web development.
       </p>
       <p>
         I care deeply about clean code, scalable architecture, and systems that actually help people —
@@ -777,7 +793,7 @@
         <div class="stat-label">Projects Built</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">2</div>
+        <div class="stat-number">3</div>
         <div class="stat-label">Internships</div>
       </div>
       <div class="stat-card">
@@ -860,7 +876,7 @@
           <div class="exp-role">Machine Learning Intern</div>
           <div class="exp-company">Extech Digital</div>
         </div>
-        <span class="exp-date">Internship</span>
+        <span class="exp-date">Jun 01, 2024 - Jul 30, 2024</span>
       </div>
       <ul class="exp-bullets">
         <li>Developed machine learning models for predictive analytics.</li>
@@ -872,16 +888,31 @@
     <div class="exp-card fi">
       <div class="exp-header">
         <div>
-          <div class="exp-role">Software Engineering Intern</div>
-          <div class="exp-company">Oasis Infobyte</div>
+          <div class="exp-role">AI/ML Intern</div>
+          <div class="exp-company">Regex Technologies</div>
         </div>
-        <span class="exp-date">Internship</span>
+        <span class="exp-date">Dec 20, 2024 - Jan 30, 2025</span>
       </div>
       <ul class="exp-bullets">
-        <li>Developed software modules using Java, Python, and SQL in a professional codebase.</li>
-        <li>Participated in application development, testing, debugging, and peer code reviews.</li>
-        <li>Worked in an Agile development environment with sprint-based delivery cycles.</li>
-        <li>Collaborated with cross-functional team members to ship software features on schedule.</li>
+        <li>Worked as an intern in the Artificial Intelligence and Machine Learning department.</li>
+        <li>Practiced ML workflow stages including data understanding, preprocessing, model experimentation, and evaluation.</li>
+        <li>Strengthened Python-based AI/ML fundamentals while working in a professional technology environment.</li>
+        <li>Maintained confidentiality and professional handling of company and customer information.</li>
+      </ul>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Web Designing & Development Intern</div>
+          <div class="exp-company">NPIT Solutions</div>
+        </div>
+        <span class="exp-date">Jul 04, 2022 - Aug 14, 2022</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Completed internship training in web designing and development.</li>
+        <li>Built foundational skills in HTML, CSS, JavaScript, Bootstrap, and responsive web page structure.</li>
+        <li>Practiced creating front-end layouts, UI components, and browser-side interactions.</li>
+        <li>Learned practical web technology workflows used in small business website development.</li>
       </ul>
     </div>
   </div>
@@ -1149,7 +1180,7 @@
 
   <br><br>
 
-  <p class="section-eyebrow fi">Certificates</p>
+  <p class="section-eyebrow fi" id="certifications">Certificates</p>
   <h3 class="section-title fi" style="font-size: clamp(1.2rem, 2.5vw, 1.75rem);">Certifications</h3>
   <div class="section-bar fi"></div>
 
@@ -1288,13 +1319,13 @@
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
 <div class="section-wrap" id="contact" style="padding-top: 0; text-align: center;">
-  <p class="section-eyebrow fi" style="justify-content: center; display: flex;">06 — Contact</p>
+  <p class="section-eyebrow fi" style="justify-content: center; display: flex;">Contact</p>
   <h2 class="section-title fi">Let's Connect</h2>
   <div class="section-bar fi" style="margin: 0.875rem auto 2rem;"></div>
 
   <p class="contact-desc fi">
     I'm actively looking for opportunities in AI, ML, and software engineering.
-    Whether it's a job, collaboration, or just a chat about deep learning — my inbox is open.
+    Whether it's a job, collaboration, or project discussion, my inbox is open.
   </p>
 
   <div class="contact-links fi">
@@ -1319,7 +1350,7 @@
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
-  © 2025 Prasad Pawar &nbsp;·&nbsp; Pune, Maharashtra &nbsp;·&nbsp; Built with HTML, CSS & JavaScript
+  &copy; 2026 Prasad Pawar &nbsp;&middot;&nbsp; Pune, Maharashtra &nbsp;&middot;&nbsp; Built with HTML, CSS & JavaScript
 </footer>
 
 <script>
@@ -1329,12 +1360,17 @@
   const ctx = canvas.getContext('2d');
   let W, H, nodes = [];
 
-  const NODE_COUNT = 55;
-  const MAX_DIST = 160;
+  const NODE_COUNT = 95;
+  const MAX_DIST = 190;
 
   function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width;
+    H = rect.height;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   function initNodes() {
@@ -1564,7 +1600,7 @@ const projectShowcase = {
       ? `<a class="plink" href="${item.repo}" target="_blank" rel="noopener">GitHub repo</a>`
       : '';
     links.innerHTML = `
-      <a class="plink primary" href="project-details.html?project=${item.id}">View case study</a>
+      <a class="plink primary" href="project-details.html?project=${item.id}">Project details</a>
       ${repoLink}
     `;
   });
@@ -1612,7 +1648,8 @@ document.querySelectorAll('.fbtn').forEach(btn => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('vis');
-        io.unobserve(e.target);
+      } else {
+        e.target.classList.remove('vis');
       }
     });
   }, { threshold: 0.12 });
