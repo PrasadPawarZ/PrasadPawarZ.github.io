@@ -698,8 +698,8 @@
       'alzheimers-disease-prediction': {
         title: "Alzheimer's Disease Prediction System",
         category: 'AI / ML',
-        status: 'Portfolio screenshots available',
-        repo: '',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/Alzheimer-Detection-using-3d-CNN-and-Multichannel-Attention-Network',
         summary: 'A full-stack AI project for Alzheimer prediction using MRI images, CNN classification, patient records, and prediction history workflows.',
         tech: ['Python', 'FastAPI', 'React', 'TensorFlow', 'CNN', 'OpenCV', 'PostgreSQL', 'Docker'],
         gallery: [
@@ -715,6 +715,24 @@
           Overview: 'The project combines a machine-learning backend with a React user interface to support medical-image based prediction workflows.',
           Highlights: ['CNN-based image classification pipeline', 'Backend API for predictions and records', 'Frontend screens for upload, result review, and history'],
           'Project Notes': ['Designed as an applied healthcare AI portfolio project', 'Uses MRI image processing concepts', 'Best presented with screenshots because model assets may be large']
+        }
+      },
+      'alzheimer-research-rag': {
+        title: 'Alzheimer Research RAG with Citations',
+        category: 'AI / RAG',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/potens-intern-aiml-prasad-pawar',
+        summary: 'A document Q&A system for Alzheimer research papers with citation-grounded answers, confidence checks, contradiction comparison, and reviewer-friendly API/UI flows.',
+        tech: ['Python', 'FastAPI', 'Streamlit', 'ChromaDB', 'SentenceTransformers', 'RAG', 'Gemini/Groq'],
+        gallery: [
+          ['portfolio-assets/projects/alzheimer-research-rag/rag-workflow.svg', 'RAG ingestion, retrieval, and answer workflow'],
+          ['portfolio-assets/projects/alzheimer-research-rag/citation-dashboard.svg', 'Citation-backed reviewer dashboard summary']
+        ],
+        visualLabel: 'Citation RAG App',
+        readme: {
+          Overview: 'The app ingests PDF/TXT research papers, extracts page text, creates sentence-aware chunks, embeds them, and retrieves evidence for citation-backed answers.',
+          Highlights: ['FastAPI endpoints for ask, retrieve, upload, ingest, stats, and contradiction checks', 'Streamlit dashboard for reviewer demos', 'Confidence scoring and citation validation to reduce hallucinated answers', 'Multilingual/Hinglish query handling at the boundary'],
+          'Run Locally': ['Add permitted PDF/TXT papers to the papers folder', 'Run python ingest.py --reset', 'Start streamlit run streamlit_app.py or uvicorn app:app --reload --port 8000']
         }
       },
       'diabetes-prediction': {
@@ -861,21 +879,21 @@
         }
       },
       'student-result-evaluation': {
-        title: 'Student Result Evaluation & Analysis System',
-        category: 'Analytics',
-        status: 'Portfolio project',
-        repo: '',
-        summary: 'An automated evaluation pipeline that reduces manual result processing and generates academic performance reports.',
-        tech: ['Python', 'Excel', 'Pandas', 'Data Analysis'],
+        title: 'Excel Result Evaluation Add-in',
+        category: 'Excel Automation',
+        status: 'Repository available',
+        repo: 'https://github.com/PrasadPawarZ/ResultHub-Excel-AddIn',
+        summary: 'An Excel-based automation project that reduces manual academic result processing and generates clean performance reports for review.',
+        tech: ['Python', 'Excel', 'Pandas', 'Reporting'],
         gallery: [
           ['portfolio-assets/projects/student-result-evaluation/result-placeholder.svg', 'Replaceable report result screenshot'],
           ['portfolio-assets/projects/student-result-evaluation/workflow-placeholder.svg', 'Replaceable analytics workflow screenshot']
         ],
-        visualLabel: 'Analytics Workflow',
+        visualLabel: 'Excel Reports',
         readme: {
-          Overview: 'The system processes result data and creates summaries for course outcomes, faculty analysis, and departmental performance.',
-          Highlights: ['Excel-based reporting flow', 'Automated calculations', 'Academic analytics dashboard concept'],
-          'Project Notes': ['Best future screenshots would include sample report outputs and analysis sheets']
+          Overview: 'The add-in-style workflow processes result data and creates summaries for course outcomes, faculty analysis, student performance, and departmental review.',
+          Highlights: ['Excel-based reporting flow', 'Automated calculations', 'Course outcome summaries', 'Faculty and department performance reports'],
+          'Project Notes': ['Best future screenshots would include sample report outputs, input sheets, and generated analysis tabs']
         }
       },
       'car-rental-system': {
@@ -1078,7 +1096,7 @@
 
     function projectTheme(project) {
       const text = `${project.title} ${project.category} ${project.tech.join(' ')}`.toLowerCase();
-      if (text.includes('olympic') || text.includes('result evaluation') || text.includes('data analysis')) return 'data';
+      if (text.includes('olympic') || text.includes('result evaluation') || text.includes('excel result') || text.includes('data analysis')) return 'data';
       if (text.includes('ai') || text.includes('ml') || text.includes('cnn') || text.includes('tensorflow') || text.includes('prediction') || text.includes('fraud') || text.includes('diabetes') || text.includes('alzheimer')) return 'ai';
       if (text.includes('java') || text.includes('swing') || text.includes('android')) return 'java';
       if (text.includes('c++') || text.includes('systems') || text.includes('rsa') || text.includes('cryptography') || text.includes('console')) return 'systems';

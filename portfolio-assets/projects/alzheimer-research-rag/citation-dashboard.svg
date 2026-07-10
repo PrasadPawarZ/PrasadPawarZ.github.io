@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Citation-backed RAG dashboard</title>
+  <desc id="desc">A dashboard mockup showing a question, answer coverage, confidence score, and source citations.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#082f49"/>
+      <stop offset=".55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000000" flood-opacity=".32"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" rx="30" fill="url(#bg)"/>
+  <circle cx="1020" cy="550" r="220" fill="#7c3aed" opacity=".16"/>
+  <circle cx="155" cy="115" r="170" fill="#06b6d4" opacity=".18"/>
+  <g filter="url(#shadow)" font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="70" width="1056" height="535" rx="24" fill="#0f172a" stroke="#334155"/>
+    <rect x="72" y="70" width="1056" height="78" rx="24" fill="#111827"/>
+    <text x="112" y="120" fill="#f8fafc" font-size="30" font-weight="700">Alzheimer Research Q&amp;A</text>
+    <text x="890" y="119" fill="#67e8f9" font-size="18" font-family="JetBrains Mono, Consolas, monospace">covered: true</text>
+    <rect x="112" y="190" width="620" height="92" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-opacity=".45"/>
+    <text x="138" y="226" fill="#bae6fd" font-size="16" font-family="JetBrains Mono, Consolas, monospace">question</text>
+    <text x="138" y="258" fill="#f8fafc" font-size="22">What accuracy did CNN models report?</text>
+    <rect x="112" y="314" width="620" height="190" rx="16" fill="#111827" stroke="#475569"/>
+    <text x="138" y="354" fill="#e2e8f0" font-size="24" font-weight="700">Answer with citations</text>
+    <text x="138" y="394" fill="#cbd5e1" font-size="18">The response is grounded in retrieved paper</text>
+    <text x="138" y="426" fill="#cbd5e1" font-size="18">snippets, page metadata, and citation checks.</text>
+    <text x="138" y="468" fill="#86efac" font-size="18" font-family="JetBrains Mono, Consolas, monospace">confidence 0.82</text>
+    <rect x="772" y="190" width="300" height="314" rx="16" fill="#111827" stroke="#34d399" stroke-opacity=".5"/>
+    <text x="800" y="230" fill="#d1fae5" font-size="22" font-weight="700">Top Citations</text>
+    <g fill="#1e293b" stroke="#475569">
+      <rect x="800" y="260" width="244" height="58" rx="12"/>
+      <rect x="800" y="336" width="244" height="58" rx="12"/>
+      <rect x="800" y="412" width="244" height="58" rx="12"/>
+    </g>
+    <g fill="#cbd5e1" font-size="16">
+      <text x="820" y="295">paper_03.pdf - page 4</text>
+      <text x="820" y="371">paper_07.pdf - page 11</text>
+      <text x="820" y="447">paper_01.pdf - page 6</text>
+    </g>
+    <rect x="112" y="535" width="960" height="34" rx="17" fill="#164e63"/>
+    <text x="138" y="558" fill="#cffafe" font-size="16" font-family="JetBrains Mono, Consolas, monospace">/ask + /contradict + /retrieve + Streamlit reviewer dashboard</text>
+  </g>
+</svg>

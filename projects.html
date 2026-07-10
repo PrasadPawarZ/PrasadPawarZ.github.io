@@ -609,7 +609,7 @@
     </div>
   </nav>
 
-  <section class="profile-hero" aria-label="All projects introduction" data-phrases="17 Projects indexed|6 Featured on homepage|4 Core skill tracks">
+  <section class="profile-hero" aria-label="All projects introduction" data-phrases="18 Projects indexed|3 Featured on homepage|4 Core skill tracks">
     <canvas class="profile-neural-canvas" aria-hidden="true"></canvas>
     <div class="hero-content">
       <div class="hero-badge"><span class="dot"></span>All Projects</div>
@@ -677,7 +677,6 @@
         title: "Trash View on Maps",
         category: "Web Game",
         track: "web",
-        featured: true,
         visual: "Maps API Game",
         repo: "",
         desc: "A browser game where players inspect Indian city map locations and identify whether visible trash is present.",
@@ -693,6 +692,17 @@
         repo: "",
         desc: "Full-stack MRI prediction workflow with FastAPI, React, CNN classification, database-backed patients, and prediction history.",
         tech: ["Python", "FastAPI", "React", "TensorFlow", "PostgreSQL", "Docker"]
+      },
+      {
+        id: "alzheimer-research-rag",
+        title: "Alzheimer Research RAG with Citations",
+        category: "AI / RAG",
+        track: "ai",
+        featured: true,
+        visual: "Citation Q&A",
+        repo: "https://github.com/PrasadPawarZ/potens-intern-aiml-prasad-pawar",
+        desc: "Document Q&A app for Alzheimer's research papers with PDF ingestion, ChromaDB retrieval, citation validation, confidence scoring, contradiction checks, multilingual handling, and Streamlit/FastAPI interfaces.",
+        tech: ["Python", "FastAPI", "Streamlit", "ChromaDB", "SentenceTransformers", "RAG"]
       },
       {
         id: "diabetes-prediction",
@@ -729,7 +739,6 @@
         title: "Credit Card Fraud Detection",
         category: "AI / ML Notebook",
         track: "ai",
-        featured: true,
         visual: "Fraud Detection",
         repo: "https://github.com/PrasadPawarZ/Credit-Card-Fraud-Detection",
         desc: "Imbalanced classification project using SMOTE, feature scaling, model comparison, confusion matrices, ROC/PR curves, and F1 analysis.",
@@ -740,7 +749,6 @@
         title: "Olympic Data EDA",
         category: "Data Analysis",
         track: "ai",
-        featured: true,
         visual: "EDA Notebook",
         repo: "https://github.com/PrasadPawarZ/Olympic-Data-EDA",
         desc: "Exploratory notebook studying Olympic participation, medals, athlete trends, and country-level performance patterns.",
@@ -768,21 +776,20 @@
       },
       {
         id: "student-result-evaluation",
-        title: "Student Result Evaluation & Analysis System",
-        category: "Analytics",
+        title: "Excel Result Evaluation Add-in",
+        category: "Excel Automation",
         track: "web",
         featured: true,
-        visual: "Analytics Pipeline",
-        repo: "",
-        desc: "Automated result-processing system that generates course outcome, faculty, and departmental performance reports.",
-        tech: ["Python", "Excel", "Pandas", "Data Analysis"]
+        visual: "Excel Reports",
+        repo: "https://github.com/PrasadPawarZ/Alzheimer-Detection-using-3d-CNN-and-Multichannel-Attention-Network",
+        desc: "Excel-based automation for academic result processing, course outcome reports, faculty analysis, student performance summaries, and departmental review metrics.",
+        tech: ["Python", "Excel", "Pandas", "Reporting"]
       },
       {
         id: "car-rental-system",
         title: "Car Rental System",
         category: "Java Desktop",
         track: "java",
-        featured: true,
         visual: "Java Swing App",
         repo: "https://github.com/PrasadPawarZ/ajp-car",
         desc: "Desktop rental-management app covering vehicles, availability, booking, return, search, billing, and Access database storage.",
@@ -814,7 +821,7 @@
         category: "Android / Java",
         track: "java",
         visual: "Banking App",
-        repo: "",
+        repo: "https://github.com/PrasadPawarZ/ResultHub-Excel-AddIn",
         desc: "Banking operations concept covering account creation, fund transfer, transaction history, and balance management.",
         tech: ["Android", "Java", "OOP"]
       },
@@ -887,7 +894,7 @@
 
     function projectTheme(project) {
       const text = `${project.title} ${project.category} ${project.tech.join(" ")}`.toLowerCase();
-      if (text.includes("olympic") || text.includes("result evaluation") || text.includes("data analysis")) return "data";
+      if (text.includes("olympic") || text.includes("result evaluation") || text.includes("excel result") || text.includes("data analysis")) return "data";
       if (project.track === "systems") return "systems";
       if (project.track === "java") return "java";
       if (project.track === "web") return "web";

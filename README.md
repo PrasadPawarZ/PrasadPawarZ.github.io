@@ -27,11 +27,9 @@ This repository contains a static portfolio built with HTML, CSS, and JavaScript
 
 | Project | Type | Highlights |
 |---|---|---|
-| Trash View on Maps | Web game | Node.js, Express, JavaScript, Google Maps API |
-| Alzheimer's Disease Prediction System | AI/full-stack | FastAPI, React, TensorFlow, CNN, OpenCV, PostgreSQL, Docker |
-| Credit Card Fraud Detection | ML notebook | SMOTE, model comparison, confusion matrices, ROC/PR curves, F1 analysis |
-| Student Result Evaluation & Analysis System | Analytics | Excel/Pandas workflow, academic result processing, report generation |
-| Car Rental System | Java desktop | Java Swing, Maven, Microsoft Access, OOP, CRUD workflows |
+| [Alzheimer's Disease Prediction System](https://github.com/PrasadPawarZ/Alzheimer-Detection-using-3d-CNN-and-Multichannel-Attention-Network) | AI/full-stack | FastAPI, React, TensorFlow, CNN, OpenCV, PostgreSQL, Docker |
+| Alzheimer Research RAG with Citations | AI/RAG | FastAPI, Streamlit, ChromaDB, SentenceTransformers, citation validation, confidence scoring |
+| [Excel Result Evaluation Add-in](https://github.com/PrasadPawarZ/ResultHub-Excel-AddIn) | Excel automation | Excel/Pandas workflow, academic result processing, course outcome and faculty reports |
 
 More projects are listed on [projects.html](projects.html).
 

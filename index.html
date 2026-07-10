@@ -925,8 +925,8 @@
   <div class="section-bar fi"></div>
 
   <p class="projects-lead fi">
-    A smaller set of stronger projects for recruiters: full-stack AI, software engineering,
-    Java/OOP, analytics automation, and evaluated machine-learning notebooks.
+    A smaller set of stronger projects for recruiters: healthcare AI, citation-backed RAG,
+    and Excel-based academic result automation.
   </p>
 
   <div class="project-actions fi">
@@ -935,7 +935,7 @@
 
   <div class="projects-grid">
 
-    <div class="proj-card featured-project" data-cat="web">
+    <div class="proj-card" data-cat="web">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(6,182,212,.12)">TV</div>
         <span class="proj-cat cat-web">Web Game</span>
@@ -960,6 +960,20 @@
         <span class="tech-pill">Python</span><span class="tech-pill">FastAPI</span><span class="tech-pill">React</span>
         <span class="tech-pill">TensorFlow</span><span class="tech-pill">CNN</span><span class="tech-pill">OpenCV</span>
         <span class="tech-pill">PostgreSQL</span><span class="tech-pill">Docker</span>
+      </div>
+    </div>
+
+    <div class="proj-card featured-project" data-cat="ai">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(6,182,212,.12)">RAG</div>
+        <span class="proj-cat cat-ai">AI / RAG</span>
+      </div>
+      <div class="proj-title">Alzheimer Research RAG with Citations</div>
+      <div class="proj-desc">Document Q&A system over Alzheimer's research papers with PDF ingestion, sentence-aware chunking, ChromaDB retrieval, citation validation, confidence scoring, contradiction checks, multilingual query handling, and Streamlit/FastAPI interfaces.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">Python</span><span class="tech-pill">FastAPI</span><span class="tech-pill">Streamlit</span>
+        <span class="tech-pill">ChromaDB</span><span class="tech-pill">SentenceTransformers</span><span class="tech-pill">RAG</span>
+        <span class="tech-pill">Gemini/Groq</span>
       </div>
     </div>
 
@@ -1002,9 +1016,9 @@
       </div>
     </div>
 
-    <div class="proj-card featured-project" data-cat="ai">
+    <div class="proj-card" data-cat="ai">
       <div class="proj-top">
-        <div class="proj-icon" style="background:rgba(59,130,246,.12)">💳</div>
+        <div class="proj-icon" style="background:rgba(59,130,246,.12)">CC</div>
         <span class="proj-cat cat-ai">AI / ML</span>
       </div>
       <div class="proj-title">Credit Card Fraud Detection</div>
@@ -1015,7 +1029,7 @@
       </div>
     </div>
 
-    <div class="proj-card featured-project" data-cat="ai">
+    <div class="proj-card" data-cat="ai">
       <div class="proj-top">
         <div class="proj-icon" style="background:rgba(6,182,212,.12)">OD</div>
         <span class="proj-cat cat-ai">EDA</span>
@@ -1057,21 +1071,21 @@
 
     <div class="proj-card featured-project" data-cat="web">
       <div class="proj-top">
-        <div class="proj-icon" style="background:rgba(16,185,129,.12)">📊</div>
-        <span class="proj-cat cat-web">Web</span>
+        <div class="proj-icon" style="background:rgba(16,185,129,.12)">XL</div>
+        <span class="proj-cat cat-web">Excel Automation</span>
       </div>
-      <div class="proj-title">Student Result Evaluation & Analysis System</div>
-      <div class="proj-desc">Automated evaluation system that reduces manual result processing. Excel-based data pipeline generating reports for course outcomes, faculty analysis, and departmental performance metrics.</div>
+      <div class="proj-title">Excel Result Evaluation Add-in</div>
+      <div class="proj-desc">Excel-based automation for academic result processing, course outcome reports, faculty analysis, student performance summaries, and departmental review metrics.</div>
       <div class="proj-tech">
         <span class="tech-pill">Python</span><span class="tech-pill">Excel</span>
-        <span class="tech-pill">Pandas</span><span class="tech-pill">Data Analysis</span>
+        <span class="tech-pill">Pandas</span><span class="tech-pill">Reporting</span>
       </div>
     </div>
 
     <!-- Java -->
-    <div class="proj-card featured-project" data-cat="java">
+    <div class="proj-card" data-cat="java">
       <div class="proj-top">
-        <div class="proj-icon" style="background:rgba(16,185,129,.12)">🚘</div>
+        <div class="proj-icon" style="background:rgba(16,185,129,.12)">CAR</div>
         <span class="proj-cat cat-java">Java</span>
       </div>
       <div class="proj-title">Car Rental System</div>
@@ -1493,7 +1507,13 @@ const projectShowcase = {
   },
   "Alzheimer's Disease Prediction System": {
     id: 'alzheimers-disease-prediction',
+    repo: 'https://github.com/PrasadPawarZ/Alzheimer-Detection-using-3d-CNN-and-Multichannel-Attention-Network',
     visual: 'AI Healthcare App'
+  },
+  'Alzheimer Research RAG with Citations': {
+    id: 'alzheimer-research-rag',
+    repo: 'https://github.com/PrasadPawarZ/potens-intern-aiml-prasad-pawar',
+    visual: 'Citation RAG App'
   },
   'Diabetes Prediction': {
     id: 'diabetes-prediction',
@@ -1529,9 +1549,10 @@ const projectShowcase = {
     repo: 'https://github.com/PrasadPawarZ/Daily-Dairy',
     visual: 'Web App'
   },
-  'Student Result Evaluation & Analysis System': {
+  'Excel Result Evaluation Add-in': {
     id: 'student-result-evaluation',
-    visual: 'Analytics Pipeline'
+    repo: 'https://github.com/PrasadPawarZ/ResultHub-Excel-AddIn',
+    visual: 'Excel Automation'
   },
   'Car Rental System': {
     id: 'car-rental-system',
@@ -1608,10 +1629,10 @@ const projectShowcase = {
 
 function projectThemeFromCard(card, title) {
   const text = `${title} ${card.dataset.cat || ''}`.toLowerCase();
-  if (text.includes('olympic') || text.includes('result evaluation') || text.includes('data eda')) return 'data';
+  if (text.includes('olympic') || text.includes('result evaluation') || text.includes('excel result') || text.includes('data eda')) return 'data';
   if (text.includes('car rental') || text.includes('train') || text.includes('atm') || text.includes('bank') || text.includes('guess')) return 'java';
   if (text.includes('rsa') || text.includes('hotel') || text.includes('cryptographic')) return 'systems';
-  if (text.includes('diabetes') || text.includes('alzheimer') || text.includes('fraud') || text.includes('cnn') || text.includes('prediction') || text.includes('accident')) return 'ai';
+  if (text.includes('diabetes') || text.includes('alzheimer') || text.includes('rag') || text.includes('fraud') || text.includes('cnn') || text.includes('prediction') || text.includes('accident')) return 'ai';
   if (card.dataset.cat === 'web') return 'web';
   return card.dataset.cat === 'sys' ? 'systems' : (card.dataset.cat || 'ai');
 }
