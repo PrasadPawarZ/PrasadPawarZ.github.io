@@ -780,7 +780,7 @@
       <p>
         I've built 15+ projects across machine learning, Java desktop apps, web development, and systems programming.
         Through internships at <span class="about-highlight">Extech Digital</span>, <span class="about-highlight">Regex Technologies</span>,
-        and <span class="about-highlight">NPIT Solutions</span>, I've worked across AI/ML workflows and practical web development.
+        and <span class="about-highlight">NPIT Solutions</span>, I've worked across AI/ML, LLM concepts, optimization workflows, and practical web development.
       </p>
       <p>
         I care deeply about clean code, scalable architecture, and systems that actually help people —
@@ -833,9 +833,9 @@
       <div class="skill-cat"><span class="cat-dot" style="background:#6EE7B7"></span>Machine Learning & AI</div>
       <div class="skill-tags">
         <span class="stag tg">TensorFlow</span><span class="stag tg">Scikit-learn</span>
-        <span class="stag tg">CNN</span><span class="stag tg">OpenCV</span>
+        <span class="stag tg">CNN</span><span class="stag tg">OpenCV</span><span class="stag tg">LLMs</span>
         <span class="stag tg">Pandas</span><span class="stag tg">NumPy</span>
-        <span class="stag tg">Matplotlib</span><span class="stag tg">Deep Learning</span>
+        <span class="stag tg">Matplotlib</span><span class="stag tg">MILP</span><span class="stag tg">PyPSA-style Modeling</span>
       </div>
     </div>
     <div class="skill-card fi">
@@ -879,10 +879,10 @@
         <span class="exp-date">Jun 01, 2024 - Jul 30, 2024</span>
       </div>
       <ul class="exp-bullets">
-        <li>Developed machine learning models for predictive analytics.</li>
-        <li>Performed data preprocessing, feature engineering, and model evaluation across business datasets.</li>
-        <li>Worked with Python, Pandas, NumPy, and Scikit-learn to extract actionable insights.</li>
-        <li>Collaborated on end-to-end AI solutions for business analytics pipelines.</li>
+        <li>Learned and practiced AI/ML workflows across data handling, preprocessing, feature engineering, and model evaluation.</li>
+        <li>Explored LLM and GenAI concepts, prompt experimentation, and practical AI use cases.</li>
+        <li>Worked with Python, Pandas, NumPy, and Scikit-learn to strengthen applied ML fundamentals.</li>
+        <li>Documented model behavior and interpreted results for review-friendly learning outputs.</li>
       </ul>
     </div>
     <div class="exp-card fi">
@@ -894,9 +894,9 @@
         <span class="exp-date">Dec 20, 2024 - Jan 30, 2025</span>
       </div>
       <ul class="exp-bullets">
-        <li>Worked as an intern in the Artificial Intelligence and Machine Learning department.</li>
-        <li>Practiced ML workflow stages including data understanding, preprocessing, model experimentation, and evaluation.</li>
-        <li>Strengthened Python-based AI/ML fundamentals while working in a professional technology environment.</li>
+        <li>Worked on MILP-based optimization concepts for electric-network planning using Python and PyPSA-style modeling workflows.</li>
+        <li>Studied network components such as generators, loads, storage devices, buses, links, and operating constraints.</li>
+        <li>Practiced optimization objective setup, scenario thinking, result interpretation, and technical documentation.</li>
         <li>Maintained confidentiality and professional handling of company and customer information.</li>
       </ul>
     </div>
@@ -1044,6 +1044,19 @@
 
     <div class="proj-card" data-cat="ai">
       <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(124,58,237,.12)">MH</div>
+        <span class="proj-cat cat-ai">AI / ML</span>
+      </div>
+      <div class="proj-title">Mental Health Treatment Prediction</div>
+      <div class="proj-desc">Flask and scikit-learn web app using workplace mental-health survey inputs, model comparison, and prediction review outputs.</div>
+      <div class="proj-tech">
+        <span class="tech-pill">Python</span><span class="tech-pill">Flask</span>
+        <span class="tech-pill">Scikit-learn</span><span class="tech-pill">Pandas</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="ai">
+      <div class="proj-top">
         <div class="proj-icon" style="background:rgba(236,72,153,.12)">👁️</div>
         <span class="proj-cat cat-ai">AI / ML</span>
       </div>
@@ -1119,15 +1132,15 @@
       </div>
     </div>
 
-    <div class="proj-card" data-cat="java">
+    <div class="proj-card" data-cat="web">
       <div class="proj-top">
-        <div class="proj-icon" style="background:rgba(16,185,129,.12)">🏦</div>
-        <span class="proj-cat cat-java">Java</span>
+        <div class="proj-icon" style="background:rgba(6,182,212,.12)">BB</div>
+        <span class="proj-cat cat-web">Django</span>
       </div>
-      <div class="proj-title">Bank Management System</div>
-      <div class="proj-desc">Android application for banking operations including account creation, fund transfers, transaction history, and balance management with a native Java Android UI.</div>
+      <div class="proj-title">Blood Bank Management System</div>
+      <div class="proj-desc">Django web application for managing donors, patients, donation requests, blood requests, and admin approval workflows.</div>
       <div class="proj-tech">
-        <span class="tech-pill">Android</span><span class="tech-pill">Java</span><span class="tech-pill">OOP</span>
+        <span class="tech-pill">Python</span><span class="tech-pill">Django</span><span class="tech-pill">SQLite</span>
       </div>
     </div>
 
@@ -1540,6 +1553,10 @@ const projectShowcase = {
     repo: 'https://github.com/PrasadPawarZ/Olympic-Data-EDA',
     visual: 'EDA Notebook'
   },
+  'Mental Health Treatment Prediction': {
+    id: 'mental-health-prediction',
+    visual: 'Flask ML App'
+  },
   'Visualizing Filters of a CNN': {
     id: 'visualizing-cnn-filters',
     visual: 'Deep Learning Visuals'
@@ -1569,9 +1586,9 @@ const projectShowcase = {
     repo: 'https://github.com/PrasadPawarZ/ATM_Interface',
     visual: 'Java Swing App'
   },
-  'Bank Management System': {
+  'Blood Bank Management System': {
     id: 'bank-management-system',
-    visual: 'Android Banking App'
+    visual: 'Django App'
   },
   'Guess the Number Game': {
     id: 'guess-the-number-game',
